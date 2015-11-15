@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Genuitec</title>
+	<atom:link href="https://www.genuitec.com/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.genuitec.com</link>
+	<description>The Cloud Control Company</description>
+	<lastBuildDate>Tue, 15 Sep 2015 12:49:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=4.2.4</generator>
+	<item>
+		<title>Coding Tip: Using Custom Bindings for Property Editing in Sapphire</title>
+		<link>https://www.genuitec.com/custom-bindings-for-property-editing-in-sapphire/</link>
+		<comments>https://www.genuitec.com/custom-bindings-for-property-editing-in-sapphire/#comments</comments>
+		<pubDate>Mon, 14 Sep 2015 13:44:07 +0000</pubDate>
+		<dc:creator><![CDATA[dimitry]]></dc:creator>
+				<category><![CDATA[MyEclipse]]></category>
+		<category><![CDATA[Planet Eclipse]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=452533</guid>
+		<description><![CDATA[<p>The ChallengeHopefully you have already discovered what [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/custom-bindings-for-property-editing-in-sapphire/">Coding Tip: Using Custom Bindings for Property Editing in Sapphire</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/custom-bindings-for-property-editing-in-sapphire/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Coding Tip: Using Dynamic Proxies to Cross Classloader Barriers</title>
+		<link>https://www.genuitec.com/using-dynamic-proxies/</link>
+		<comments>https://www.genuitec.com/using-dynamic-proxies/#comments</comments>
+		<pubDate>Tue, 08 Sep 2015 12:50:46 +0000</pubDate>
+		<dc:creator><![CDATA[support-piotr]]></dc:creator>
+				<category><![CDATA[MyEclipse]]></category>
+		<category><![CDATA[Planet Eclipse]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=452435</guid>
+		<description><![CDATA[<p>The ChallengeDealing with classloaders can be tricky, e [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/using-dynamic-proxies/">Coding Tip: Using Dynamic Proxies to Cross Classloader Barriers</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/using-dynamic-proxies/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>REST inspect you said?</title>
+		<link>https://www.genuitec.com/rest-inspect-you-said/</link>
+		<comments>https://www.genuitec.com/rest-inspect-you-said/#comments</comments>
+		<pubDate>Fri, 04 Sep 2015 14:06:12 +0000</pubDate>
+		<dc:creator><![CDATA[Rocio Trujillo]]></dc:creator>
+				<category><![CDATA[Genuitec]]></category>
+		<category><![CDATA[products]]></category>
+		<category><![CDATA[Webclipse]]></category>
+		<category><![CDATA[developer]]></category>
+		<category><![CDATA[REST]]></category>
+		<category><![CDATA[Rest Web Services]]></category>
+		<category><![CDATA[RESTful]]></category>
+		<category><![CDATA[sandbox]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=452100</guid>
+		<description><![CDATA[<p>Yes, REST inspect. You remember the time when you wante [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/rest-inspect-you-said/">REST inspect you said?</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/rest-inspect-you-said/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Ready for Eclipse Night London?</title>
+		<link>https://www.genuitec.com/ready-for-eclipse-night-london/</link>
+		<comments>https://www.genuitec.com/ready-for-eclipse-night-london/#comments</comments>
+		<pubDate>Wed, 26 Aug 2015 14:25:35 +0000</pubDate>
+		<dc:creator><![CDATA[Genuitec Administrator]]></dc:creator>
+				<category><![CDATA[Genuitec]]></category>
+		<category><![CDATA[coder]]></category>
+		<category><![CDATA[developer]]></category>
+		<category><![CDATA[Eclipse]]></category>
+		<category><![CDATA[London]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=451483</guid>
+		<description><![CDATA[<p>Hi fellow coders!Genuitec knows how important is for a  [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/ready-for-eclipse-night-london/">Ready for Eclipse Night London?</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/ready-for-eclipse-night-london/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>99 problems, but a JavaScript debugger ain’t one</title>
+		<link>https://www.genuitec.com/webclipse-introducesjavascriptdebugger/</link>
+		<comments>https://www.genuitec.com/webclipse-introducesjavascriptdebugger/#comments</comments>
+		<pubDate>Tue, 25 Aug 2015 16:56:18 +0000</pubDate>
+		<dc:creator><![CDATA[Anabella]]></dc:creator>
+				<category><![CDATA[Eclipse]]></category>
+		<category><![CDATA[Genuitec]]></category>
+		<category><![CDATA[Webclipse]]></category>
+		<category><![CDATA[continuous debugging]]></category>
+		<category><![CDATA[debug]]></category>
+		<category><![CDATA[Java EE]]></category>
+		<category><![CDATA[Javascript]]></category>
+		<category><![CDATA[javascript debugger]]></category>
+		<category><![CDATA[Rest Web Services]]></category>
+		<category><![CDATA[RESTful services]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=451603</guid>
+		<description><![CDATA[<p>If one or more of these phrases have crossed your mind  [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/webclipse-introducesjavascriptdebugger/">99 problems, but a JavaScript debugger ain’t one</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/webclipse-introducesjavascriptdebugger/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>GapDebug Twitter Chat!</title>
+		<link>https://www.genuitec.com/gapdebug-twitter-chat-2/</link>
+		<comments>https://www.genuitec.com/gapdebug-twitter-chat-2/#comments</comments>
+		<pubDate>Fri, 21 Aug 2015 20:56:54 +0000</pubDate>
+		<dc:creator><![CDATA[Rocio Trujillo]]></dc:creator>
+				<category><![CDATA[Genuitec]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=451477</guid>
+		<description><![CDATA[<p>Hello Developers!Hey have you heard about Genuitec Twit [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/gapdebug-twitter-chat-2/">GapDebug Twitter Chat!</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/gapdebug-twitter-chat-2/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Webclipse introduces Hot Reload</title>
+		<link>https://www.genuitec.com/webclipsehotreload/</link>
+		<comments>https://www.genuitec.com/webclipsehotreload/#comments</comments>
+		<pubDate>Tue, 18 Aug 2015 14:25:40 +0000</pubDate>
+		<dc:creator><![CDATA[Anabella]]></dc:creator>
+				<category><![CDATA[Eclipse]]></category>
+		<category><![CDATA[Genuitec]]></category>
+		<category><![CDATA[Webclipse]]></category>
+		<category><![CDATA[Java EE]]></category>
+		<category><![CDATA[Javascript]]></category>
+		<category><![CDATA[javascript debugger]]></category>
+		<category><![CDATA[Rest Web Services]]></category>
+		<category><![CDATA[RESTful services]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=398295</guid>
+		<description><![CDATA[<p>Deploy &#38; Restart. ReDeploy &#38; Restart..ReDeploy  [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/webclipsehotreload/">Webclipse introduces Hot Reload</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/webclipsehotreload/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>MyEclipse 2015 CI 14 update!</title>
+		<link>https://www.genuitec.com/myeclipse-2015-ci-14-update/</link>
+		<comments>https://www.genuitec.com/myeclipse-2015-ci-14-update/#comments</comments>
+		<pubDate>Thu, 13 Aug 2015 13:24:29 +0000</pubDate>
+		<dc:creator><![CDATA[Rocio Trujillo]]></dc:creator>
+				<category><![CDATA[Genuitec]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=397699</guid>
+		<description><![CDATA[<p>Yes! MyEclipse gets better with time. Just like wine. T [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/myeclipse-2015-ci-14-update/">MyEclipse 2015 CI 14 update!</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/myeclipse-2015-ci-14-update/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Webclipse Twitter chat &#8211; August 11th Recap</title>
+		<link>https://www.genuitec.com/webclipse-twitter-chat-august-11th-recap/</link>
+		<comments>https://www.genuitec.com/webclipse-twitter-chat-august-11th-recap/#comments</comments>
+		<pubDate>Tue, 11 Aug 2015 17:02:52 +0000</pubDate>
+		<dc:creator><![CDATA[Rocio Trujillo]]></dc:creator>
+				<category><![CDATA[Genuitec]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=397562</guid>
+		<description><![CDATA[<p>Here is the Twitter chat recap in case you missed it!Q1 [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/webclipse-twitter-chat-august-11th-recap/">Webclipse Twitter chat &#8211; August 11th Recap</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/webclipse-twitter-chat-august-11th-recap/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Genuitec Twitter Chat &#8211; Webclipse is here!</title>
+		<link>https://www.genuitec.com/genuitec-twitter-chat-webclipse-is-here/</link>
+		<comments>https://www.genuitec.com/genuitec-twitter-chat-webclipse-is-here/#comments</comments>
+		<pubDate>Mon, 10 Aug 2015 18:29:53 +0000</pubDate>
+		<dc:creator><![CDATA[Rocio Trujillo]]></dc:creator>
+				<category><![CDATA[Genuitec]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=397507</guid>
+		<description><![CDATA[<p>Hello World!As you all may know, we are presenting our  [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/genuitec-twitter-chat-webclipse-is-here/">Genuitec Twitter Chat &#8211; Webclipse is here!</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/genuitec-twitter-chat-webclipse-is-here/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Eclipse+Web=Webclipse</title>
+		<link>https://www.genuitec.com/eclipsewebwebclipse/</link>
+		<comments>https://www.genuitec.com/eclipsewebwebclipse/#comments</comments>
+		<pubDate>Thu, 30 Jul 2015 14:13:00 +0000</pubDate>
+		<dc:creator><![CDATA[Rocio Trujillo]]></dc:creator>
+				<category><![CDATA[Eclipse]]></category>
+		<category><![CDATA[Genuitec]]></category>
+		<category><![CDATA[Webclipse]]></category>
+		<category><![CDATA[Java EE]]></category>
+		<category><![CDATA[Javascript]]></category>
+		<category><![CDATA[javascript debugger]]></category>
+		<category><![CDATA[Rest Web Services]]></category>
+		<category><![CDATA[RESTful services]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=396232</guid>
+		<description><![CDATA[<p>Hello developers of the world!Genuitec is pleased to an [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/eclipsewebwebclipse/">Eclipse+Web=Webclipse</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/eclipsewebwebclipse/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>GapDebug 2.0: Like 1.0 but two times better!</title>
+		<link>https://www.genuitec.com/gapdebug2timesbetter/</link>
+		<comments>https://www.genuitec.com/gapdebug2timesbetter/#comments</comments>
+		<pubDate>Thu, 23 Jul 2015 14:50:34 +0000</pubDate>
+		<dc:creator><![CDATA[Anabella]]></dc:creator>
+				<category><![CDATA[GapDebug]]></category>
+		<category><![CDATA[Genuitec]]></category>
+		<category><![CDATA[Mobile]]></category>
+		<category><![CDATA[Android]]></category>
+		<category><![CDATA[app installation]]></category>
+		<category><![CDATA[cordova]]></category>
+		<category><![CDATA[debug PhoneGap]]></category>
+		<category><![CDATA[gapdebug]]></category>
+		<category><![CDATA[instant debugging]]></category>
+		<category><![CDATA[iOS]]></category>
+		<category><![CDATA[PhoneGap]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=396008</guid>
+		<description><![CDATA[<p>This month has definitely been our month for awesome re [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/gapdebug2timesbetter/">GapDebug 2.0: Like 1.0 but two times better!</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/gapdebug2timesbetter/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Ladies and Gentlemen SDC 2015 SR2 is here</title>
+		<link>https://www.genuitec.com/sdc2015sr2ishere/</link>
+		<comments>https://www.genuitec.com/sdc2015sr2ishere/#comments</comments>
+		<pubDate>Tue, 07 Jul 2015 17:50:04 +0000</pubDate>
+		<dc:creator><![CDATA[Anabella]]></dc:creator>
+				<category><![CDATA[Eclipse]]></category>
+		<category><![CDATA[Genuitec]]></category>
+		<category><![CDATA[Secure Delivery Center]]></category>
+		<category><![CDATA[eclipse 4.5]]></category>
+		<category><![CDATA[Eclipse Mars]]></category>
+		<category><![CDATA[MyEclipse]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[SDC]]></category>
+		<category><![CDATA[Secure Deliver Center]]></category>
+		<category><![CDATA[software]]></category>
+		<category><![CDATA[UI]]></category>
+		<category><![CDATA[Web Development]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=394597</guid>
+		<description><![CDATA[<p>Last week we cheerfully joined the release of Eclipse 4 [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/sdc2015sr2ishere/">Ladies and Gentlemen SDC 2015 SR2 is here</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/sdc2015sr2ishere/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Genuitec at EclipseCon France!</title>
+		<link>https://www.genuitec.com/genuitec-at-eclipsecon-france/</link>
+		<comments>https://www.genuitec.com/genuitec-at-eclipsecon-france/#comments</comments>
+		<pubDate>Thu, 02 Jul 2015 14:37:53 +0000</pubDate>
+		<dc:creator><![CDATA[Rocio Trujillo]]></dc:creator>
+				<category><![CDATA[Genuitec]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=394401</guid>
+		<description><![CDATA[<p>Hello Everyone!We have just had the opportunity to atte [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/genuitec-at-eclipsecon-france/">Genuitec at EclipseCon France!</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/genuitec-at-eclipsecon-france/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>SDC Twitter Chat Recap &#8211; June 30th</title>
+		<link>https://www.genuitec.com/sdc-twitter-chat-recap-june-30th/</link>
+		<comments>https://www.genuitec.com/sdc-twitter-chat-recap-june-30th/#comments</comments>
+		<pubDate>Tue, 30 Jun 2015 15:29:15 +0000</pubDate>
+		<dc:creator><![CDATA[Rocio Trujillo]]></dc:creator>
+				<category><![CDATA[Genuitec]]></category>
+
+		<guid isPermaLink="false">https://www.genuitec.com/?p=394369</guid>
+		<description><![CDATA[<p>Hello everyone! Here is the recap of our #GenuitecChat  [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://www.genuitec.com/sdc-twitter-chat-recap-june-30th/">SDC Twitter Chat Recap &#8211; June 30th</a> appeared first on <a rel="nofollow" href="https://www.genuitec.com">Genuitec</a>.</p>
+]]></description>
+		<wfw:commentRss>https://www.genuitec.com/sdc-twitter-chat-recap-june-30th/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+Database Caching 10/46 queries in 0.042 seconds using apc
+Object Caching 1950/2051 objects using apc
+Content Delivery Network via resources.cloud.genuitec.com
+
+ Served from: www.genuitec.com @ 2015-09-15 08:10:27 by W3 Total Cache -->
