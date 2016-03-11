@@ -16,6 +16,7 @@
 #include <unordered_map>
 #include <queue>
 #include <stack>
+#include <fstream>
 #include "main.h"
 using namespace std;
 
@@ -245,13 +246,62 @@ int main(int argc, const char * argv[]) {
 //            g.push_back(l);
 //            g.push_back(l2);
 //            s.minPathSum(g);
-            TreeNode* root = new TreeNode(1);
-            TreeNode left1(1);
-            root->left = &left1;
+//            TreeNode* root = new TreeNode(3);
+//            TreeNode l1(1);
+//            TreeNode r1(5);
+//            TreeNode l21(0);
+//            TreeNode r21(2);
+//            TreeNode l22(4);
+//            TreeNode r22(6);
+//            root->left = &l1;
+//            root->right = &r1;
+//            l1.left = &l21;
+//            l1.right = &r21;
+//            r1.left = &l22;
+//            r1.right = &r22;
+//            if(s.isValidBST(root)) cout<< "right!" <<endl;
             
-            if(s.isValidBST(root)) cout<< "right!" <<endl;
+//            TreeNode* root = new TreeNode(1);
+//            vector<int> ans;
+//            ans = s.inorderTraversal(root);
+//            TreeNode* root = new TreeNode(1);
+//            vector<int> ans;
+//            ans = s.preorderTraversal(root);
+//            vector<vector<int>> ans;
+//            ans = s.combine(3,3);
+            
+//            vector<int> nums;
+//            nums.push_back(1);
+//            nums.push_back(3);
+//            nums.push_back(2);
+//            s.nextPermutation(nums);
+//            cout<<s.bulbSwitch(7)<<endl;
+            
+//            string line;
+//            while(getline(cin,line)) {
+//            cout<<line<<endl;
+//            }
+            
+//            bitset<65536> bs(0);
+//            bs.flip();
+//            if(bs.none()) cout<<"None!"<<endl;
+//            else cout<<bs.count()<<endl;
+            
+//            vector<int> vec = {1,2,3};
+//            vector<int>::const_iterator iter;
+//            for(iter = vec.begin(); iter!=vec.end();++iter) {
+//                cout<<*iter<<endl;
+//            }
             
             
+            ifstream fs;
+            fs.open ("RF24.h");
+            string line;
+            if(fs.is_open()) {
+                getline(fs, line);
+                cout << line << endl;
+            }
+            fs.close();
             
             break;
         }

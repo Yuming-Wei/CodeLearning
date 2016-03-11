@@ -41,37 +41,200 @@ struct ListNode {
 class Solution {
 private:
     stack<int> myQueue,trans;
+    vector<int> ans;
+    vector<vector<int>> ans2;
+    
 public:
+    int addDigits(int num) {
+        return (num - 9*((num - 1)/9));
+    }
+    
+    int bulbSwitch(int n) {
+        return sqrt(n);
+    }
+    
+    /*
+     Ternery System
+      0 1 2
+    0 0 1 2
+    1 1 2 0
+    2 2 0 1
+     */
+    int singleNumber2(vector<int>& nums) {
+        int one = 0, two = 0, three = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            two |= one & nums[i];
+            one ^= nums[i];
+            three = one & two;
+            one = one ^ three;
+            two = two ^ three;
+        }
+        return one;
+    }
+    
+    int singleNumber(vector<int>& nums) {
+        int res = 0;
+        for(int i = 0; i < nums.size(); i++) res = res ^ nums[i];
+        return res;
+    }
+    
+    void nextPermutation(vector<int>& nums) {
+        int n = nums.size();
+        if(n < 2) return;
+        
+        int i;
+        for(i = n - 1; i >= 1; i--) {
+            if(nums[i] > nums[i - 1]) {
+                int m = n - 1;
+                while(m > i - 1) {
+                    if(nums[m] > nums[i - 1]) {
+                        swap(nums[m], nums[i - 1]);
+                        break;
+                    }
+                    m--;
+                }
+                sort(nums.begin() + i, nums.end());
+                break;
+            }
+        }
+        if(i == 0) {
+            for(int j = 0; j < n/2; j++) {
+                int temp = nums[j];
+                nums[j] = nums[n - 1 - j];
+                nums[n - 1 - j] = temp;
+            }
+        }
+    }
+    
+    
+    vector<vector<int>> permute(vector<int>& nums) {
+        ans2.push_back(nums);
+        permute_helper(nums, 1);
+        return ans2;
+    }
+    void permute_helper(vector<int>& nums, int begin) {
+        if(begin >= nums.size()) return;
+        permute_helper(nums, begin + 1);
+        
+        for(int i = 0; i< begin; i++) {
+            swap(nums[i], nums[begin]);
+            ans2.push_back(nums);
+            permute_helper(nums, begin + 1);
+            swap(nums[i], nums[begin]);
+        }
+    }
+    
+    
+    vector<vector<int>> combine(int n, int k) {
+        vector<vector<int>> ans;
+        vector<int> l(k,0);
+        int i = 0;
+        
+        while(i >= 0) {
+            l[i]++;
+            if(l[i] > n) i--;
+            else if(i == k - 1) ans.push_back(l);
+            else {
+                i++;
+                l[i] = l[i - 1];
+            }
+        }
+        return ans;
+    }
+    
+    
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        
+        if(root == NULL) return ans;
+        stack<TreeNode*> treeStack;
+        
+        while(1) {
+            if(root != NULL) {
+                ans.push_back(root->val);
+                if(root->right != NULL) treeStack.push(root->right);
+                root = root->left;
+            } else {
+                if(treeStack.size() == 0) break;
+                else {
+                    root = treeStack.top();
+                    treeStack.pop();
+                }
+            }
+        }
+        return ans;
+    }
+    
+    vector<int> inorderTraversal_Iter(TreeNode* root) {
+        vector<int> ans;
+        if(!root) return ans;
+        
+        stack<TreeNode*> ord;
+        TreeNode* node = root;
+        while(node) {
+            while(node) {
+                if(node->right != NULL) ord.push(node->right);
+                ord.push(node);
+                node = node->left;
+            }
+            node = ord.top();
+            ord.pop();
+            
+            while(!ord.empty()&&(node->right == NULL)) {
+                ans.push_back(node->val);
+                node = ord.top();
+                ord.pop();
+            }
+            
+            ans.push_back(node->val);
+            
+            if(!ord.empty()) {
+                node = ord.top();
+                ord.pop();
+            } else node = NULL;
+        }
+        
+        
+        return ans;
+    }
+    
+    vector<int> inorderTraversal(TreeNode* root) {
+        tra(root);
+        return ans;
+    }
+    
+    void tra(TreeNode* root) {
+        if(!root) return;
+        TreeNode* leftOri = root;
+        stack<TreeNode*> parentSt;
+        parentSt.push(leftOri);
+        while(leftOri->left) {
+            parentSt.push(leftOri->left);
+            leftOri = leftOri->left;
+        }
+        while(!parentSt.empty()) {
+            TreeNode* tempParent = parentSt.top();
+            ans.push_back(tempParent->val);
+            if(tempParent->right) tra(tempParent->right);
+            parentSt.pop();
+        }
+        
+    }
+    
     bool isValidBST(TreeNode* root) {
-        if(!root) return true;
-        int median = root->val;
-        return isValidBST_Left(root->left,median)&&isValidBST_Right(root->right,median);
+        if(root==NULL) return true;
+        if(root->left){
+            TreeNode* p=root->left;
+            while(p->right) p=p->right;
+            if(p->val >= root->val) return false;
+        }
+        if(root->right){
+            TreeNode* p=root->right;
+            while(p->left) {p=p->left;}
+            if(p->val <= root->val) return false;
+        }
+        return isValidBST(root->left) && isValidBST(root->right);
     }
-    
-    bool isValidBST_Left(TreeNode* root, int median) {
-        if(!root) return true;
-        if(root->val >= median) return false;
-        if(root->left) {
-            if((root->left->val >= root->val)||(root->left->val >= median)) return false;
-        }
-        if(root->right) {
-            if((root->right->val <= root->val||(root->right->val >= median))) return false;
-        }
-        return isValidBST_Left(root->left, median)&&isValidBST_Right(root->right, median);
-    }
-    
-    bool isValidBST_Right(TreeNode* root, int median) {
-        if(!root) return true;
-        if(root->val <= median) return false;
-        if(root->left) {
-            if((root->left->val >= root->val)||(root->left->val <= median)) return false;
-        }
-        if(root->right) {
-            if((root->right->val <= root->val||(root->right->val <= median))) return false;
-        }
-        return isValidBST_Left(root->left, median)&&isValidBST_Right(root->right, median);
-    }
-    
     
     vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>> ans;
