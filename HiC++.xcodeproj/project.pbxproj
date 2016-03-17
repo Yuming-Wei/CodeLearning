@@ -23,9 +23,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B04B3BCB1C9269410066F180 /* example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.txt; sourceTree = SOURCE_ROOT; };
 		B094B8391B597FB500198214 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		B0CE83211B16270B002081C4 /* HiC++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiC++"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0CE83241B16270B002081C4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; };
+		B0EA44351C936EAC00929396 /* sketch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sketch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,10 @@
 		B0CE83231B16270B002081C4 /* HiC++ */ = {
 			isa = PBXGroup;
 			children = (
+				B04B3BCB1C9269410066F180 /* example.txt */,
 				B0CE83241B16270B002081C4 /* main.cpp */,
 				B094B8391B597FB500198214 /* main.h */,
+				B0EA44351C936EAC00929396 /* sketch.h */,
 			);
 			path = "HiC++";
 			sourceTree = "<group>";
@@ -90,7 +94,7 @@
 		B0CE83191B16270B002081C4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "My AD";
 				TargetAttributes = {
 					B0CE83201B16270B002081C4 = {
@@ -147,6 +151,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;

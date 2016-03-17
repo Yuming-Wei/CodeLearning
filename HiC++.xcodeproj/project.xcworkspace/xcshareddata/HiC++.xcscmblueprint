@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A8D73B64A6971CF5EDD1B55635FE85B45159ADB3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A8D73B64A6971CF5EDD1B55635FE85B45159ADB3" : 0,
+    "8FDFE6B33A332BBC779B13FF5ED770C7B3BA6176" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "F07FB7EF-1CA9-4A87-80D7-2A05AE4628FE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A8D73B64A6971CF5EDD1B55635FE85B45159ADB3" : "HiC++\/",
+    "8FDFE6B33A332BBC779B13FF5ED770C7B3BA6176" : "HiC++\/hello-world\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "HiC++",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "HiC++.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/YumingWei\/hello-world.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8FDFE6B33A332BBC779B13FF5ED770C7B3BA6176"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/YumingWei\/learnLinux.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A8D73B64A6971CF5EDD1B55635FE85B45159ADB3"
+    }
+  ]
+}

@@ -50,6 +50,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "main:main.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "fs.is_open()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Solution::isPalindrome(ListNode*):main.h">
       </ContextState>
    </ContextStates>

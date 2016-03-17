@@ -18,6 +18,8 @@
 #include <stack>
 #include <fstream>
 #include "main.h"
+#include "sketch.h"
+
 using namespace std;
 
 
@@ -294,15 +296,15 @@ int main(int argc, const char * argv[]) {
 //            }
             
             
-            ifstream fs;
-            fs.open ("RF24.h");
-            string line;
-            if(fs.is_open()) {
-                getline(fs, line);
-                cout << line << endl;
-            }
-            fs.close();
-            
+//            sketch sket;
+//            sket.lastKline(10);
+//            
+//            test t;
+//            t.lastKline(3);
+//            t.say(1);
+//            t.say2(1,2);
+
+            cout << getMax(1.0,2.123123) << endl;
             break;
         }
             
