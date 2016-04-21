@@ -12,6 +12,8 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -29,7 +31,7 @@ public:
 };
 
 sketch::sketch(void){
-    cout << "Object is being created" << endl;
+    cout << "Sketch object is being created" << endl;
 }
 
 void sketch::lastKline(int k) {
@@ -98,5 +100,65 @@ template <class T>
 T getMax(T a, T b) {
     return (a>=b)?a:b;
 }
+
+class CountInversion:public sketch {
+private:
+    fstream f;
+    vector<int> IntArray;
+    string str;
+    unsigned long len;
+    unsigned long mid;
+public:
+    CountInversion() {
+        
+    }
+    ~CountInversion() {
+        
+    }
+    
+    void ReadTXT() {
+        f.open("/Users/Steven/Documents/HiC++/IntegerArray.txt");
+        if(f.is_open()) {
+            while(getline(f,str)) IntArray.push_back(stoi(str));
+            str = "";
+        }
+        f.close();
+    }
+    
+    unsigned long Count() {
+        len = IntArray.size();
+        mid = len / 2;
+        if(len == 1) return 0;
+        return (CountLeft(IntArray, mid) + CountRight(IntArray, mid, len) + CountSplit(IntArray, mid, len));
+    }
+    
+    static unsigned long CountLeft(vector<int> IntArray, unsigned long mid) {
+        int countLeft = 0;
+        for(int i = 0; i < mid; ++i)
+            for(int j = i + 1; j < mid; ++j) {
+                if(IntArray[i] > IntArray[j]) countLeft++;
+            }
+        return countLeft;
+    }
+    
+    static unsigned long CountRight(vector<int> IntArray, unsigned long mid, unsigned long len) {
+        int countRight = 0;
+        for(unsigned long i = mid; i < len; ++i)
+            for(unsigned long j = i + 1; j < len; ++j) {
+                if(IntArray[i] > IntArray[j]) countRight++;
+            }
+        return countRight;
+    }
+    
+    static unsigned long CountSplit(vector<int> IntArray, unsigned long mid, unsigned long len) {
+        int countSplit = 0;
+        for(int i = 0; i < mid; ++i)
+            for(unsigned long j = mid; j < len; ++j) {
+                if(IntArray[i] > IntArray[j]) countSplit++;
+            }
+        return countSplit;
+    }
+    
+};
 
 #endif /* sketch_h */

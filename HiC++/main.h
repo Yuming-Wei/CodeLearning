@@ -11,6 +11,7 @@
 
 
 #include <iostream>
+#include <fstream>
 #include <math.h>
 #include <string>
 #include <time.h>
@@ -45,6 +46,514 @@ private:
     vector<vector<int>> ans2;
     
 public:
+    bool isBalanced(TreeNode* root) {
+        if(!root) return true;
+        if(abs(depth(root->left) - depth(root->right)) > 1) return false;
+        else return (isBalanced(root->left)&isBalanced(root->right));
+    }
+    
+    int depth(TreeNode* root) {
+        if(!root) return 0;
+        return max(depth(root->left), depth(root->right)) + 1;
+    }
+    
+    int minDepth(TreeNode* root) {
+        if(!root) return 0;
+        if(!root->left) return (minDepth(root->right) + 1);
+        if(!root->right) return (minDepth(root->left) + 1);
+        return (min(minDepth(root->left),minDepth(root->right)) + 1);
+        
+    }
+    
+    TreeNode* invertTree(TreeNode* root) {
+        if(root != NULL) {
+            TreeNode* temp;
+            temp = root->left;
+            root->left = root->right;
+            root->right = temp;
+            invertTree(root->right);
+            invertTree(root->left);
+        }
+        return root;
+    }
+    
+    string multiply(string num1, string num2) {
+        int len1 = num1.size(), len2 = num2.size();
+        if(!len1||!len2) return 0;
+        vector<int> line, ans;
+        string ret = "";
+        int carry = 0, mul1 = 0, mul2 = 0, temp;
+        int m, n;
+        int shift, check = 0;
+        for(int i = len1 - 1; i >= 0 ; i--) {
+            for(int j = len2 - 1; j >= 0; j--) {
+                mul1 = num1[i] - '0';
+                mul2 = num2[j] - '0';
+                if(i == len1 - 1) {
+                    line.push_back((mul1*mul2 + carry)%10);
+                    carry = (mul1*mul2 + carry)/10;
+                } else {
+                    shift = (len1 - 1 - i) + (len2 - 1 - j);
+                    if(shift < line.size()) {
+                        temp = line[shift] + mul1*mul2 + carry;
+                        line[shift] = temp%10;
+                        carry = temp/10;
+                    } else {
+                        temp = mul1*mul2 + carry;
+                        line.push_back(temp%10);
+                        carry = temp/10;
+                    }
+                }
+            }
+            if(carry) {
+                line.push_back(carry);
+                carry = 0;
+            }
+        }
+        
+        for(int ii = line.size() - 1; ii >= 0; ii--) {
+            ret = ret + (char)(line[ii] + 48);
+            check += line[ii];
+        }
+        return (check == 0)?"0":ret;
+    }
+    
+    string multiply2(string num1, string num2) {
+        int len1 = num1.size(), len2 = num2.size();
+        if(!len1||!len2) return 0;
+        vector<int> line, ans;
+        string ret = "";
+        int carry1 = 0, carry2 = 0, mul1 = 0, mul2 = 0, m, n, temp, check = 0;;
+        for(int i = len1 - 1; i >= 0 ; i--) {
+            for(int j = len2 - 1; j >= 0; j--) {
+                mul1 = num1[i] - '0';
+                mul2 = num2[j] - '0';
+                line.push_back((mul1*mul2 + carry1)%10);
+                carry1 = (mul1*mul2 + carry1)/10;
+            }
+            if(carry1) {
+                line.push_back(carry1);
+                carry1 = 0;
+            }
+            
+            carry2 = 0;
+            if(ans.size() == 0) ans = line;
+            else {
+                m = len1 - 1 - i; n = 0;
+                while(n < line.size()) {
+                    if(m < ans.size()) {
+                        temp = ans[m] + line[n] + carry2;
+                        ans[m] = temp%10;
+                        carry2 = temp/10;
+                    } else {
+                        ans.push_back((line[n] + carry2)%10);
+                        carry2 = (line[n] + carry2)/10;
+                    }
+                    m++;
+                    n++;
+                }
+                if(carry2 != 0) ans.push_back(carry2);
+            }
+            line.clear();
+        }
+        for(int ii = ans.size() - 1; ii >=0; ii--) {
+            ret = ret + (char)(ans[ii] + 48);
+            check += ans[ii];
+        }
+        return (check == 0)?"0":ret;
+    }
+    
+    
+    vector<int> plusOne(vector<int>& digits) {
+        int len = digits.size();
+        int mark = 1;
+        
+        for(int i = len - 1; i >= 0; i--) {
+            if((digits[i] + mark) <= 9) {
+                digits[i] = digits[i] + mark;
+                mark = 0;
+            } else {
+                digits[i] = 0;
+                mark = 1;
+            }
+        }
+        if(mark == 1) {
+            digits.push_back(0);
+            for(int i = 0; i < digits.size() - 1; i++) digits[i + 1] = digits[i];
+            digits[0] = 1;
+        }
+        return digits;
+    }
+    
+    string addBinary(string a, string b) {
+        int lenA = a.length();
+        int lenB = b.length();
+        int mark = 0;
+        string ans = "";
+        int i = lenA - 1, j = lenB - 1;
+        while((i >= 0)&&(j >= 0)) {
+            if((a[i] - '0' + b[j] - '0' + mark) == 0) {
+                ans = '0' + ans;
+                mark = 0;
+            } else if((a[i] - '0' + b[j] - '0' + mark) == 1) {
+                ans = '1' + ans;
+                mark = 0;
+            } else if((a[i] - '0' + b[j] - '0' + mark) == 2) {
+                ans = '0' + ans;
+                mark = 1;
+            } else if((a[i] - '0' + b[j] - '0' + mark) == 3) {
+                ans = '1' + ans;
+                mark = 1;
+            }
+            i--;
+            j--;
+        }
+        if((i < 0)&&(j >= 0)) {
+            for(int m = j; m >= 0; m--) {
+                if((b[m] - '0' + mark) == 0) {
+                    ans = '0' + ans;
+                    mark = 0;
+                } else if((b[m] - '0' + mark) == 1) {
+                    ans = '1' + ans;
+                    mark = 0;
+                } else if((b[m] - '0' + mark) == 2) {
+                    ans = '0' + ans;
+                    mark = 1;
+                }
+            }
+        } else if((j < 0)&&(i >= 0)) {
+            for(int m = i; m >= 0; m--) {
+                if((a[m] - '0' + mark) == 0) {
+                    ans = '0' + ans;
+                    mark = 0;
+                } else if((a[m] - '0' + mark) == 1) {
+                    ans = '1' + ans;
+                    mark = 0;
+                } else if((a[m] - '0' + mark) == 2) {
+                    ans = '0' + ans;
+                    mark = 1;
+                }
+            }
+        }
+        if(mark == 1) ans = '1' + ans;
+        return ans;
+        
+    }
+    
+    void gameOfLife(vector<vector<int>>& board) {
+        int nRow = board.size(), nCol = board[0].size();
+        int dirX[] = {-1, -1, -1, 0, 0, 1, 1, 1};    // x coordinator change around 8 cells
+        int dirY[] = {-1, 0, 1, -1, 1, -1, 0, 1};    // y coordinator change around 8 cells
+        int count = 0;
+        
+        // Refresh the board with transition state
+        for(int i = 0; i < nRow; i++) {
+            for(int j = 0; j < nCol; j++) {
+                count = 0;
+                // add value from 8 surrounding cells
+                for(int m = 0; m < 8; m++) {
+                    // make sure the index is within the scope
+                    if(((i + dirX[m]) >= 0)&&((i + dirX[m]) < nRow)&&((j + dirY[m]) >= 0)&&((j + dirY[m]) < nCol)) {
+                        // here the cell value may be original value or transitin value
+                        if((board[i + dirX[m]][j + dirY[m]] == 1)||(board[i + dirX[m]][j + dirY[m]] == 3)) count++;
+                    }
+                }
+                // Get the transition state
+                board[i][j] = Count2Tran(board[i][j],count);
+            }
+        }
+        
+        // Refresh the board to the new value
+        for(int i = 0; i < nRow; i++) {
+            for(int j = 0; j < nCol; j++){
+                board[i][j] = State2Value(board[i][j]);
+            }
+        }
+    }
+    
+    // Get the original value in the cell from the current transition state
+    int Tran2Ori(int state) {
+        int origin;
+        if(state == 0) origin = 0;        // state 0 means 0->0, then origin is 0
+        else if(state == 1) origin = 1;   // state 1 means 1->1, then origin is 1
+        else if(state == 2) origin = 0;   // state 2 means 0->1, then origin is 0
+        else if(state == 3) origin = 1;   // state 3 means 1->0, then origin is 1
+        return origin;
+    }
+    
+    // Return the transition state from the origin cell state and the live cell count around it
+    int Count2Tran(int origin, int count) {
+        int state;
+        if((origin == 0)&&(count == 3)) state = 2;        // 2 means from 0->1
+        else if((origin == 0)&&(count != 3)) state = 0;   // 0 means remaining as 0, 0->0
+        else if((origin == 1)&&(count < 2)) state = 3;    // 3 means 1->0
+        else if((origin == 1)&&(count == 2)) state = 1;   // 1 mean remaining as 1, 1->1
+        else if((origin == 1)&&(count == 3)) state = 1;   // 1 mean remaining as 1, 1->1
+        else if((origin == 1)&&(count > 3)) state = 3;    // 3 means 1->0
+        return state;
+    }
+    
+    // Get the value after transition
+    int State2Value(int state) {
+        int value;
+        if(state == 0) value = 0;   // state 0 means 0->0
+        if(state == 1) value = 1;   // state 1 means 1->1
+        if(state == 2) value = 1;   // state 2 means 0->1
+        if(state == 3) value = 0;   // state 3 means 1->0
+        return value;
+        
+    }
+    
+    
+    void setZeroes(vector<vector<int>>& matrix) {
+        int nRow = matrix.size();
+        int nCol = matrix[0].size();
+        int i, j;
+        bool firstC = false, firstR = false;
+        
+        for(i = 0; i < nRow; i++) {
+            for(j = 0; j < nCol; j++) {
+                if(matrix[i][j] == 0) {
+                    if(i == 0) firstR = true;
+                    if(j == 0) firstC = true;
+                    else {
+                        matrix[0][j] = 0;
+                        matrix[i][0] = 0;
+                    }
+                }
+            }
+        }
+        for(i = 1; i < nRow; i++) {
+            if(matrix[i][0] == 0) {
+                for(j = 1; j < nCol; j++) matrix[i][j] = 0;
+            }
+        }
+        
+        for(j = 1; j < nCol; j++) {
+            if(matrix[0][j] == 0) for(i = 1; i < nRow; i++) matrix[i][j] = 0;
+        }
+        
+        if(firstR) for(j = 0; j < nCol; j++) matrix[0][j] = 0;
+        if(firstC) for(i = 0; i < nRow; i++) matrix[i][0] = 0;
+    }
+    
+
+    
+    vector<int> getRow(int rowIndex) {
+        vector<int> line = {1};
+        vector<int> temp = line;
+        int loop = 1;
+        while(loop <= rowIndex) {
+            for(int i = 1; i < temp.size(); i++) {
+                line[i] = temp[i] + temp[i - 1];
+            }
+            line.push_back(1);
+            loop += 1;
+            temp = line;
+        }
+        return line;
+    }
+    
+    int threeSumClosest(vector<int>& nums, int target) {
+        int len = nums.size();
+        int sum = 0, minsum = 0;;
+        int dif = INT_MAX;
+        if(len < 3) {
+            for(int i = 0; i < len; i++) sum += nums[i];
+            return sum;
+        }
+        
+        int left, right;
+        sort(nums.begin(),nums.end());
+        
+        for(int i = 0; i < (len - 2); i++) {
+            left = i + 1;
+            right = len - 1;
+            while(left < right) {
+                sum = nums[i] + nums[left] + nums[right];
+                if(abs(sum - target) <= dif) {
+                    dif = abs(sum - target);
+                    minsum = sum;
+                }
+                if(sum > target) right--;
+                if(sum < target) left++;
+                if(sum == target) return minsum;
+            }
+        }
+        return minsum;
+    }
+    
+    vector<vector<int>> threeSum2(vector<int>& nums) {
+        int len = nums.size();
+        vector<vector<int>> ans;
+        if(len < 3) return ans;
+        int left, right, sum, target = 0;
+        vector<int> line;
+        
+        sort(nums.begin(),nums.end());
+        for(int i = 0; i < len - 2;) {
+            if(nums[i] > 0) break;
+            left = i + 1;
+            right = len - 1;
+            if(nums[right] < 0) break;
+            
+            while(left < right) {
+                if(nums[right] < 0) break;
+                sum = nums[i] + nums[left] + nums[right];
+                if(sum > target) {
+                    do {
+                        right--;
+                    } while((nums[right] == nums[right + 1])&&(right > left + 1));
+                } else if(sum < target){
+                    do {
+                        left++;
+                    } while((nums[left] == nums[left - 1])&&(left < right - 1));
+                } else {
+                    line.clear();
+                    line.push_back(nums[i]);
+                    line.push_back(nums[left]);
+                    line.push_back(nums[right]);
+                    ans.push_back(line);
+                    do {
+                        left++;
+                    } while((nums[left] == nums[left - 1])&&(left < right - 1));
+                    
+                    do {
+                        right--;
+                    } while((nums[right] == nums[right + 1])&&(right > left + 1));
+                }
+            }
+            do {
+                i++;
+            } while ((i < len - 2) && nums[i] == nums[i - 1]);
+        }
+        return ans;
+    }
+    
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int len = nums.size();
+        vector<int> ans = {};
+        unordered_map<int,int> mp;
+        for(int i = 0; i < len ; i++) {
+            ++mp[nums[i]] = i;
+        }
+        for(int j = 0; j < len; j++) {
+            if((mp.find(target - nums[j]) != mp.end()&&(mp.find(target - nums[j])->second != j))) {
+                if(j < mp.find(target - nums[j])->second) {
+                    ans.push_back(j);
+                    ans.push_back(mp.find(target - nums[j])->second);
+                } else {
+                    ans.push_back(mp.find(target - nums[j])->second);
+                    ans.push_back(j);
+                }
+                return ans;
+            }
+        }
+               return ans;
+    }
+    
+    vector<int> countBits(int num) {
+        vector<int> ans(1,0);
+        for(int i = 1; i <= num; i++) {
+            ans.push_back(ans[i - pow(2,floor(log2(i)))] + 1);
+        }
+        return ans;
+    }
+    
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(!root || (root == p) || (root == q))  return root;
+        TreeNode* left = lowestCommonAncestor(root->left,p,q);
+        TreeNode* right = lowestCommonAncestor(root->right,p,q);
+        if(left&&right) return root;
+        return (left != NULL)?left:right;
+    }
+    
+    TreeNode* lowestCommonAncestorBST(TreeNode* root, TreeNode* p, TreeNode* q) {
+        while(root != NULL) {
+            if(p->val > root->val && q->val > root->val) root = root->right;
+            else if(p->val < root->val && q->val < root->val) root = root->left;
+            else break;
+        }
+        return root;
+        /*if(root != NULL) {
+         while((p->val-root->val)*(q->val-root->val) > 0) {
+         root  = (root->val > p->val ? root->left:root->right);
+         }
+         }
+         return root;*/
+    }
+    
+    vector<int> singleNumber(vector<int>& nums) {
+        int len = nums.size();
+        int temp = 0, a = 0, b = 0;
+        for(int i = 0; i < len; i++) temp ^= nums[i];
+        int mask = temp & (~temp + 1);
+        for(int i = 0; i < len; i++) {
+            if(nums[i] & mask) a ^= nums[i];
+            else b ^= nums[i];
+        }
+        return vector<int> {a,b};
+    }
+    
+    int missingNumber(vector<int>& nums) {
+        /*int len = nums.size();
+        unordered_map<int,int> mp;
+        for(int i = 0; i <= len; ++i) mp[i]++;
+        for(int j = 0; j < len; ++j) mp[nums[j]]--;
+        unordered_map<int,int>::iterator it;
+        for(it = mp.begin(); it != mp.end(); ++it) {
+            if(it->second == 1) break;
+        }
+        return it->first;
+        */
+        
+        int len = nums.size();
+        long sum1 = 0, sum2 = 0;
+        for(int i = 0; i <= len; i++) {
+            sum1 += i;
+            if(i < len) sum2 += nums[i];
+        }
+        
+        return sum1 - sum2;
+    }
+    
+    ListNode* sortList(ListNode* head) {
+        if((head == NULL) || (head->next == NULL)) return head;
+        
+        ListNode* fast = head->next, *slow = head;
+        
+        while((fast != NULL)&&(fast->next != NULL)) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        fast = slow->next;
+        slow->next = NULL;
+        return merge(sortList(head),sortList(fast));
+    }
+    
+    ListNode* merge(ListNode* head, ListNode* mid){
+        ListNode* l1 = head, *l2 = mid;
+        ListNode ans(0);
+        ListNode* curr = &ans;
+        
+        while((l1 != NULL)&&(l2 != NULL)){
+            if(l1->val > l2->val) {
+                curr->next = l2;
+                l2 = l2->next;
+                curr = curr->next;
+            } else {
+                curr->next = l1;
+                l1 = l1->next;
+                curr = curr->next;
+            }
+        }
+        if(l1 == NULL) curr->next = l2;
+        if(l2 == NULL) curr->next = l1;
+        
+        return ans.next;
+    }
+    
+    
     int addDigits(int num) {
         return (num - 9*((num - 1)/9));
     }
@@ -72,7 +581,7 @@ public:
         return one;
     }
     
-    int singleNumber(vector<int>& nums) {
+    int singleNumber1(vector<int>& nums) {
         int res = 0;
         for(int i = 0; i < nums.size(); i++) res = res ^ nums[i];
         return res;
@@ -164,6 +673,22 @@ public:
         }
         return ans;
     }
+    vector<int> preorderTraversal2(TreeNode* root) {
+        vector<int> ans;
+        if(root == NULL) return ans;
+        stack<TreeNode*> st;
+        while((root != NULL)||(st.size() != 0)) {
+            ans.push_back(root->val);
+            if(root->right != NULL) st.push(root->right);
+            if(root->left != NULL) root = root->left;
+            else if(st.size() != 0) {
+                root = st.top();
+                st.pop();
+            } else root = NULL;
+        }
+        return ans;
+    }
+    
     
     vector<int> inorderTraversal_Iter(TreeNode* root) {
         vector<int> ans;
@@ -230,7 +755,7 @@ public:
         }
         if(root->right){
             TreeNode* p=root->right;
-            while(p->left) {p=p->left;}
+            while(p->left) p=p->left;
             if(p->val <= root->val) return false;
         }
         return isValidBST(root->left) && isValidBST(root->right);
@@ -334,6 +859,21 @@ public:
     }
     
     vector<vector<int>> generate(int numRows) {
+        vector<vector<int>> pascalTri;
+        if(numRows == 0) return pascalTri;
+        vector<int> line(1,1);
+        pascalTri.push_back(line);
+        
+        for(int i = 1; i < numRows; i++) {
+            line = {1};
+            for(int j = 1; j <= i; j++) {
+                line.push_back(pascalTri[i - 1][j] + pascalTri[i - 1][j - 1] );
+            }
+            pascalTri.push_back(line);
+        }
+        return pascalTri;
+    }
+    vector<vector<int>> generate2(int numRows) {
         vector<vector<int>> pasV = {};
         vector<int> line;
         if(numRows == 0) return pasV;
@@ -609,18 +1149,6 @@ public:
         ans.push_back(sum);
         ans.push_back(i);
         return ans;
-    }
-    
-    bool isBalanced(TreeNode* root) {
-        if(root == NULL) return true;
-        if(abs(cntLvl(root->left) - cntLvl(root->right)) > 1) return false;
-        else return isBalanced(root->left)&&isBalanced(root->right);
-    }
-    
-    int cntLvl(TreeNode* root) {
-        if (root != NULL) {
-            return max(1 + cntLvl(root->left),  1 + cntLvl(root->right));
-        } else return 0;
     }
     
     int minSubArrayLen(int s, vector<int>& nums) {
@@ -936,33 +1464,6 @@ public:
             } else {
                 if(vec[i] == 0) ans += 'Z';
                 ans += ((char) vec[i] - 1 + 'A');
-            }
-        }
-        return ans;
-    }
-    
-    vector<int> twoSum(vector<int>& nums, int target) {
-        int len = nums.size();
-        vector<int> ans = {};
-        unordered_map<int,int> mp;
-        if(len == 2) {
-            ans.push_back(0);
-            ans.push_back(1);
-            return ans;
-        }
-        for(int i = 0; i < len ; i++) {
-            ++mp[nums[i]] = i;
-        }
-        for(int j = 0; j < len; j++) {
-            if((mp.find(target - nums[j]) != mp.end())&&(mp.find(target - nums[j])->second != j)) {
-                if(j < mp.find(target - nums[j])->second) {
-                    ans.push_back(j + 1);
-                    ans.push_back(mp.find(target - nums[j])->second + 1);
-                } else {
-                    ans.push_back(mp.find(target - nums[j])->second + 1);
-                    ans.push_back(j + 1);
-                }
-                return ans;
             }
         }
         return ans;

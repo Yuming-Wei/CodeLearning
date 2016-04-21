@@ -1,6 +1,5 @@
 #include <iostream>
 #include <hello-world.h>
-#include <stdio.h>
 
 using namespace std;
 

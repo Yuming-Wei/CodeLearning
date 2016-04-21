@@ -24,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		B04B3BCB1C9269410066F180 /* example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.txt; sourceTree = SOURCE_ROOT; };
+		B050C4761CA08E3E0022C049 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = SOURCE_ROOT; };
 		B094B8391B597FB500198214 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		B0CE83211B16270B002081C4 /* HiC++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiC++"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0CE83241B16270B002081C4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		B0CE83231B16270B002081C4 /* HiC++ */ = {
 			isa = PBXGroup;
 			children = (
+				B050C4761CA08E3E0022C049 /* test.txt */,
 				B04B3BCB1C9269410066F180 /* example.txt */,
 				B0CE83241B16270B002081C4 /* main.cpp */,
 				B094B8391B597FB500198214 /* main.h */,

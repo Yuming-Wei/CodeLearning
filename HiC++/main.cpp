@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include <math.h>
-#include <string>
+#include <string.h>
 #include <time.h>
 #include <vector>
 #include <stdlib.h>
@@ -303,9 +303,44 @@ int main(int argc, const char * argv[]) {
 //            t.lastKline(3);
 //            t.say(1);
 //            t.say2(1,2);
+            
+//            cout << getMax(1.0,2.123123) << endl;
+            
+//            ListNode l1(2);
+//            ListNode l2(1);
+//            l1.next = &l2;
+//            s.sortList(&l1);
+            
+//            vector<int> nums(1);
+//            
+//            s.missingNumber(nums);
 
-            cout << getMax(1.0,2.123123) << endl;
-            break;
+//            CountInversion CI;
+//            CI.ReadTXT();
+//            cout << CI.Count() << endl;
+
+//            s.countBits(4);
+//            break;
+            
+//            vector<int> nums = {7,-1,14,-12,-8,7,2,-15,8,8,-8,-14,-4,-5,7,9,11,-4,-15,-6,1,-14,4,3,10,-5,2,1,6,11,2,-2,-5,-7,-6,2,-15,11,-6,8,-4,2,1,-1,4,-6,-15,1,5,-15,10,14,9,-8,-6,4,-6,11,12,-15,7,-1,-9,9,-1,0,-4,-1,-12,-2,14,-9,7,0,-3,-4,1,-2,12,14,-10,0,5,14,-1,14,3,8,10,-8,8,-5,-2,6,-11,12,13,-7,-12,8,6,-13,14,-2,-5,-11,1,3,-6};
+//            s.threeSum2(nums);
+            
+//            s.generate2(3);
+//            vector<vector<int>> ans = {{0},{1}};
+//            s.setZeroes(ans);
+
+//            vector<vector<int>> vec = {{1,1},{1,0}};
+//            s.gameOfLife(vec);
+            
+//            string a = "11";
+//            string b = "1";
+//            s.addBinary(a, b);
+
+            string num1 = "123";
+            string num2 = "456";
+            cout << s.multiply(num1, num2) << endl;
+
+            
         }
             
         default:
