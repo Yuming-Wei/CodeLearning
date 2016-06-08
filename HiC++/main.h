@@ -19,6 +19,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unordered_map>
+#include <map>
 #include <queue>
 #include <stack>
 using namespace std;
@@ -46,6 +47,391 @@ private:
     vector<vector<int>> ans2;
     
 public:
+    int mySqrt(int x) {
+        if(x < 2) return x;
+        long int i = x/2;
+        while(i*i > x) i = (i + x/i)/2;
+        return i;
+    }
+    
+    int divide(int dividend, int divisor) {
+        if((divisor == 0)||(dividend == INT_MIN && divisor == -1)) return INT_MAX;
+        bool positive;
+        long long count = 0, power;
+        if((dividend > 0) ^ (divisor > 0)) positive = false;
+        else positive = true;
+        long long a = abs((long long) dividend);
+        long long b = abs((long long) divisor), c = abs((long long) divisor);
+        
+        while(b <= a) {
+            power = 1;
+            c = b;
+            while(c<<1 < a) {
+                c <<= 1;
+                power <<= 1;
+            }
+            count += power;
+            a -= c;
+        }
+        if(!positive) count = -count;
+        return count;
+    }
+    
+    int integerBreak(int n) {
+        if(n < 4) return (n/2)*(n - n/2);
+        if(n%3 == 0) return pow(3,n/3);
+        else if(n%3 == 2) return pow(3,n/3)*2;
+        return pow(3,n/3 - 1)*4;
+    }
+    
+    double myPow(double x, int n) {
+        if(n == 0 || x == 1) return 1.0;
+        if(n == INT_MIN) return (double) 1/(x*myPow(x,INT_MAX));
+        if(n < 0) return (double) 1/myPow(x,0-n);
+        if(n%2 == 0) return myPow(x*x, n/2);
+        return x*myPow(x,n-1);
+    }
+    
+    TreeNode* sortedListToBST(ListNode* head) {
+        if(!head) return nullptr;
+        if(head->next == nullptr) return new TreeNode(head->val);
+        
+        TreeNode* root = new TreeNode(getMidNode(head, nullptr)->val);
+        root->left = new TreeNode(getMidNode(head, getMidNode(head, nullptr))->val);
+        root->right = new TreeNode(getMidNode(getMidNode(head, nullptr)->next, nullptr)->val);
+        
+        return root;
+    }
+    
+    
+    ListNode* getMidNode(ListNode* head, ListNode* end) {
+        if(!head) return nullptr;
+        if(head == end) return head;
+        ListNode* fast = head->next, *slow = head;
+        
+        while((fast != end)&&(fast->next != end)) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
+    }
+    
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+//        if(nums.size() == 0) return nullptr;
+//        if(nums.size() == 1) {
+//            TreeNode* cur = new TreeNode(nums[0]);
+//            return cur;
+//        }
+//        
+//        TreeNode* cur = new TreeNode(nums[nums.size()/2]);
+//        vector<int> numLeft = vector<int>(nums.begin(), nums.begin() + nums.size()/2);
+//        vector<int> numRight = vector<int>(nums.begin()+ nums.size()/2 + 1, nums.end());
+//        cur->left = sortedArrayToBST(numLeft);
+//        cur->right = sortedArrayToBST(numRight);
+//        return cur;
+        
+        if(nums.size() == 0) return nullptr;
+        TreeNode* cur = recurBuildBST(nums, 0 , nums.size() - 1);
+        return cur;
+    }
+    TreeNode* recurBuildBST(vector<int>& nums, int left, int right) {
+        if(left > right) return nullptr;
+        if(left == right) return new TreeNode(nums[(left + right)/2]);
+        
+        TreeNode* cur = new TreeNode(nums[(left + right)/2]);
+        cur->left = recurBuildBST(nums, left, (left + right)/2 - 1);
+        cur->right = recurBuildBST(nums, (left + right)/2 + 1, right);
+        return cur;
+    }
+    
+    TreeNode* buildTree2(vector<int>& inorder, vector<int>& postorder) {
+        int inLen = inorder.size(), poLen = postorder.size();
+        if(inLen != poLen) return NULL;
+        TreeNode* root = recurBuildFromInAndPost(inorder, 0, inLen - 1, postorder, 0, poLen - 1);
+        return root;
+    }
+    
+    TreeNode* recurBuildFromInAndPost(vector<int>& inorder, int inLeft, int inRight, vector<int>& postorder, int poLeft, int poRight) {
+        if((inLeft > inRight)||(poLeft > poRight)) return NULL;
+        
+        TreeNode* cur = new TreeNode(postorder[poRight]);
+        int i = inRight;
+        for(;i >= 0; i--) {
+            if(inorder[i] == cur->val)
+                break;
+        }
+        cur->left = recurBuildFromInAndPost(inorder, inLeft, i - 1, postorder, poLeft, poRight - (inRight - i) - 1);
+        cur->right = recurBuildFromInAndPost(inorder, i + 1, inRight, postorder, poRight - (inRight - i), poRight - 1);
+        return cur;
+    }
+    
+    
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        int preLen = preorder.size(), inLen = inorder.size();
+        TreeNode* root = NULL;
+        if((preLen != inLen)||!preLen||!inLen) return root;
+        
+        root = recurBuildFromPreAndIn(preorder, 0, preLen - 1, inorder, 0, inLen - 1);
+        
+        return root;
+    }
+    
+    TreeNode* recurBuildFromPreAndIn(vector<int>& preorder, int preLeft, int preRight, vector<int>& inorder, int inLeft, int inRight){
+        if((preLeft > preRight)||(inLeft > inRight)) return NULL;
+        
+        TreeNode* cur = new TreeNode(preorder[preLeft]);
+        
+        int i = inLeft;
+        for(;i <= inRight; i++) {
+            if(inorder[i] == cur->val) break;
+        }
+        
+        TreeNode* leftNode = recurBuildFromPreAndIn(preorder, preLeft + 1, preLeft + i - inLeft, inorder, inLeft, i - 1);
+        TreeNode* rightNode = recurBuildFromPreAndIn(preorder, preLeft + i - inLeft + 1, preRight, inorder, i + 1, inRight);
+        cur->left = leftNode;
+        cur->right = rightNode;
+        return cur;
+    }
+    
+    bool isValidSudoku(vector<vector<char>>& board) {
+        /*if(!board.size()) return 0;
+        
+        map<char,int> mp;
+        for(int i = 0; i < board.size(); i++) {
+            mp.clear();
+            for(int j = 0; j < board[0].size(); j++) {
+                if(board[i][j] != '.') {
+                    mp[board[i][j]]++;
+                    if(mp[board[i][j]] > 1) return false;
+                }
+            }
+        }
+        for(int i = 0; i < board[0].size(); i++) {
+            mp.clear();
+            for(int j = 0; j < board.size(); j++) {
+                if(board[j][i] != '.') {
+                    mp[board[j][i]]++;
+                    if(mp[board[j][i]] > 1) return false;
+                }
+            }
+        }
+        
+        vector<int> dirX = {-1, 0, 1, -1, 1, -1, 0, 1};
+        vector<int> dirY = {-1, -1, -1, 0, 0, 1, 1, 1};
+        for(int i = 1; i < 8; i += 3) {
+            mp.clear();
+            for(int j = 1; j < 8; j += 3) {
+                mp.clear();
+                for(int m = 0; m < 9; m++) {
+                    if(board[i + dirX[m]][j + dirY[m]] != '.') {
+                        mp[board[i + dirX[m]][j + dirY[m]]]++;
+                        if(mp[board[i + dirX[m]][j + dirY[m]]] > 1) return false;
+                    }
+                }
+            }
+        }
+        
+        return true;
+         */
+        if(board.size() == 0){
+            return true;
+        }
+        vector<int> row(10, 0);
+        vector<int> col(10, 0);
+        vector<int> block(10,0);
+        //fill one by one when it`s valid.
+        //No need to check all the numbers in one point on the board.
+        for(int i = 0;i < 9; ++i){
+            for(int j = 0;j < 9; ++j){
+                if(board[i][j] != '.'){
+                    int num = board[i][j] - '0';
+                    int bit = 1 << num;
+                    if( (row[i] & bit) || (col[j] & bit) || (block[i / 3 * 3 + j / 3] & bit) ){
+                        return false;
+                    }
+                    row[i] |= bit;
+                    col[j] |= bit;
+                    block[i / 3 * 3 + j / 3] |= bit;
+                }
+            }
+        }
+        return true;
+    }
+    
+    ListNode* removeElements(ListNode* head, int val) {
+        ListNode* curr = head;
+        ListNode root(0);
+        root.next = head;
+        head = &root;
+        
+        while(curr) {
+            if(curr->val == val) {
+                head->next = curr->next;
+                curr = curr->next;
+            } else {
+                head = curr;
+                curr = curr->next;
+            }
+        }
+        return root.next;
+    }
+    
+    void moveZeroes(vector<int>& nums) {
+        int left = 0, right = 0;
+        while(nums[right] != 0) right++;
+        while(left <= right) {
+            while((nums[right] == 0)&&(right < nums.size())) right++;
+            if(right >= nums.size()) right--;
+            if(nums[left] == 0) {
+                nums[left] = nums[right];
+                nums[right] = 0;
+            }
+            left++;
+        }
+    }
+    
+    int removeElement(vector<int>& nums, int val) {
+        int left = 0, right = nums.size() - 1;
+        while(left <= right) {
+            if(nums[left] == val) {
+                nums[left] = nums[right];
+                right--;
+            } else {
+                left++;
+            }
+        }
+        return right + 1;
+        
+        /*int len = nums.size();
+        if(!len) return 0;
+        int temp;
+        int count = 0;
+        int swap_pos = 0;
+        for(int i = 0; i < len; i++) {
+            if(nums[i] == val) {
+                while((nums[len - swap_pos - 1] == val)&&(len - swap_pos - 1 > i)) swap_pos++;
+                temp = nums[len - swap_pos - 1];
+                nums[len - swap_pos - 1] = nums[i];
+                nums[i] = temp;
+                swap_pos = 0;
+            }
+        }
+        while((nums[len - count - 1] == val) && ((len - count - 1) >= 0)) count++;
+        for(int n = 0; n < count; n++) {
+            nums.pop_back();
+        }
+        return nums.size();
+         */
+    }
+    
+    int maxProfitIII(vector<int>& prices) {
+        vector<int> firstAns, secondAns, seg1, seg2;
+        firstAns = findMaxPro(prices);
+        if(firstAns[1] - 1 > 0) {
+            for(int i = 0; i < firstAns[1] - 1; i++) seg1.push_back(prices[i]);
+        }
+        if(firstAns[2] + 1 < prices.size()) {
+            for(int i = firstAns[2] + 1; i < prices.size(); i++) seg2.push_back(prices[i]);
+        }
+        
+        secondAns  = max(findMaxPro(seg1),findMaxPro(seg2));
+        return (firstAns[0] + secondAns[0]);
+    }
+    
+    vector<int> findMaxPro(vector<int>& prices) {
+        int maxProfit = 0, minPrice = INT_MAX;
+        int minIdx = 0, maxIdx = 0, tempMinIdx = 0;
+        vector<int> ans;
+        for(int i = 0; i < prices.size(); i++) {
+            if(prices[i] < minPrice) {
+                minPrice = prices[i];
+                tempMinIdx = i;
+            }
+            if(maxProfit < (prices[i] - minPrice)) {
+                maxProfit = (prices[i] - minPrice);
+                minIdx = tempMinIdx;
+                maxIdx = i;
+            }
+        }
+        ans.push_back(maxProfit);
+        ans.push_back(minIdx);
+        ans.push_back(maxIdx);
+        return ans;
+    }
+    
+    
+    int maxProfitII(vector<int>& prices) {
+        int maxProfit = 0;
+        for( int i = 1; i < prices.size(); i++) {
+            if(prices[i] > prices[i - 1]) maxProfit += (prices[i] - prices[i - 1]);
+        }
+        return maxProfit;
+    }
+    
+    int compareVersion(string version1, string version2) {
+        int len1 = version1.length();
+        int len2 = version2.length();
+        int i = 0, j = 0;
+        string strVer1 = "", strVer2 = "";
+        while((i < len1)||(j < len2)) {
+            while((i < len1)&&(version1[i] != '.')) {
+                strVer1 += version1[i];
+                i++;
+            }
+            while((j < len2)&&(version2[j] != '.')) {
+                strVer2 += version2[j];
+                j++;
+            }
+            if(strVer1 == "") {
+                if(stoi(strVer2) > 0) return -1;
+            } else if(strVer2 == "") {
+                if(stoi(strVer1) > 0) return 1;
+            } else {
+                if(stoi(strVer1) > stoi(strVer2)) return 1;
+                else if(stoi(strVer1) < stoi(strVer2)) return -1;
+            }
+            strVer1 = "";
+            strVer2 = "";
+            i++;j++;
+        }
+        return 0;
+    }
+    
+    string countAndSay(int n) {
+        string ans = "1";
+        if(n == 0) return "";
+        string num;
+        char digit;
+        int count = 1;
+        int i = 0;
+        while(--n) {
+            while(i < ans.length()) {
+                digit = ans[i];
+                while(ans[i] == ans[i + 1]) {
+                    count++;
+                    i++;
+                }
+                i++;
+                num = num + (char)(count + 48) + digit;
+                count = 1;
+            }
+            ans = num;
+            num = "";
+            
+            i = 0;
+        }
+        return ans;
+    }
+    
+    int maxProfit(vector<int>& prices) {
+        int maxPro = 0, minPri = INT_MAX;
+        for(int i = 0; i < prices.size();i++) {
+            minPri = min(minPri, prices[i]);
+            maxPro = max(maxPro, prices[i] - minPri);
+        }
+        return maxPro;
+    }
+    
     bool isBalanced(TreeNode* root) {
         if(!root) return true;
         if(abs(depth(root->left) - depth(root->right)) > 1) return false;
@@ -958,16 +1344,14 @@ public:
     }
     
     int removeDuplicates(vector<int>& nums) {
-        int len = nums.size();
-        if(!len) return len;
-        int count = 1, flag = 0;
-        for(int i = 1; i < len; i++) {
-            if(nums[i] == nums[i - 1]) {
-                count++;
-            } else count = 1;
-            if(count < 3) nums[++flag] = nums[i];
+        if(nums.size() == 0) return 0;
+        int count = 1;
+        for(int i = 1; i < nums.size(); i++) {
+            if(nums[i] == nums[i - 1]) continue;
+            nums[count++] = nums[i];
         }
-        return flag + 1;
+        return count;
+        
     }
     
     ListNode* deleteDuplicates(ListNode* head) {
@@ -1003,36 +1387,41 @@ public:
     }
     
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        int num1 = 0, num2 = 0, sum = 0, count = 0;
-        vector<int> nums;
-        while(l1) {
-            num1 = num1 + l1->val*pow(10,count);
+        if(l2 == NULL) return l1;
+        if(l1 == NULL) return l2;
+        ListNode* root = l1;
+        ListNode* l1Last;
+        int carry = 0;
+        while((l1 != NULL)&&(l2 != NULL)) {
+            l1->val += (l2->val + carry);
+            carry = l1->val / 10;
+            l1->val %= 10;
+            l1Last = l1;
             l1 = l1->next;
-            count++;
-        }
-        count = 0;
-        while(l2) {
-            num2 = num2 + l2->val*pow(10,count);
             l2 = l2->next;
-            count++;
         }
-        count = 0;
-        sum = num1 + num2;
-        do {
-            count++;
-            nums.push_back(sum%10);
-            sum /= 10;
-        } while(sum);
-        
-        ListNode *ans = new ListNode(nums[0]);
-        ListNode *cur = ans;
-        int i = 1;
-        while(i < nums.size()) {
-            cur->next = new ListNode(nums[i]);
-            cur = cur->next;
-            i++;
-        }
-        return ans;
+        if((l1 == NULL)&&(l2 != NULL)) {
+            l1Last->next = l2;
+            ListNode* l2Last;
+            while(l2) {
+                l2->val += carry;
+                carry = l2->val / 10;
+                l2->val %= 10;
+                l2Last = l2;
+                l2 = l2->next;
+            }
+            if(carry) l2Last->next = new ListNode(carry);
+        } else if((l1 != NULL)&&(l2 == NULL)) {
+            while(l1) {
+                l1->val += carry;
+                carry = l1->val / 10;
+                l1->val %= 10;
+                l1Last = l1;
+                l1 = l1 ->next;
+            }
+            if(carry) l1Last->next = new ListNode(carry);
+        } else if((l1 == NULL)&&(l2 == NULL)) if(carry) l1Last->next = new ListNode(carry);
+        return root;
     }
     
     bool isPalindrome(string s) {
@@ -1102,53 +1491,6 @@ public:
             while(height[rgt] <= h) rgt--;
         }
         return maxarea;
-    }
-    
-    int compareVersion(string version1, string version2) {
-        int len1 = version1.length();
-        int len2 = version2.length();
-        int i, j;
-        int ans = INT_MAX;
-        for(i = 0, j  = 0; (i < len1)&&(j < len2); i++, j++) {
-            vector<int> res1,res2;
-            res1 = getnum(version1,i);
-            res2 = getnum(version2,j);
-            if(res1[0] > res2[0]) return 1;
-            if(res1[0] < res2[0]) return -1;
-            if(res1[0] == res2[0]) {
-                i = res1[1];
-                j = res2[1];
-                if((i == len1)&&(j == len2)) return 0;
-            }
-        }
-        if((j > len2)&&(i < len1)) {
-            vector<int> res;
-            res = getnum(version1, i);
-            if(res[0] == 0) ans = 0;
-            else ans = 1;
-        }
-        if((j < len2)&&(i > len1)) {
-            vector<int> res;
-            res = getnum(version2, j);
-            if(res[0] == 0) ans = 0;
-            else ans = -1;
-        }
-        if((j == len2)&&(i == len1)) ans = 0;
-        return ans;
-    }
-
-    vector<int> getnum(string str, int pos) {
-        bool flag = true;
-        double sum = 0;
-        vector<int> ans;
-        int i = pos;
-        for(i = pos; i < str.length(); i++) {
-            if(str[i] == '.') break;
-            sum = sum*10 + str[i] - '0';
-        }
-        ans.push_back(sum);
-        ans.push_back(i);
-        return ans;
     }
     
     int minSubArrayLen(int s, vector<int>& nums) {

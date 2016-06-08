@@ -3,6 +3,9 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "TrieNode::getChildNode(char):main.h">
+      </ContextState>
+      <ContextState
          contextName = "Solution::multiply(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;):main.h">
          <PersistentStrings>
             <PersistentString
@@ -60,7 +63,26 @@
          contextName = "Solution::rob(std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;&amp;):main.h">
       </ContextState>
       <ContextState
+         contextName = "Trie::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;):main.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "root">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "Solution::threeSum(std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;&amp;):main.h">
+      </ContextState>
+      <ContextState
+         contextName = "Solution::mergeTwoLists(ListNode*, ListNode*):main.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "l1 != NULL">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Solution::gameOfLife(std::__1::vector&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;, std::__1::allocator&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt; &gt; &gt;&amp;):main.h">
       </ContextState>
       <ContextState
          contextName = "Solution::addBinary(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;):main.h">
@@ -78,17 +100,6 @@
                value = "b[0]">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Solution::mergeTwoLists(ListNode*, ListNode*):main.h">
-         <PersistentStrings>
-            <PersistentString
-               value = "l1 != NULL">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "Solution::gameOfLife(std::__1::vector&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;, std::__1::allocator&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt; &gt; &gt;&amp;):main.h">
       </ContextState>
       <ContextState
          contextName = "Solution::minPathSum(std::__1::vector&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;, std::__1::allocator&lt;std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt; &gt; &gt;&amp;):main.h">
@@ -113,6 +124,9 @@
                value = "ntPerfectSquares[m - i*i] ">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TrieNode::setChild(TrieNode*, char):main.h">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

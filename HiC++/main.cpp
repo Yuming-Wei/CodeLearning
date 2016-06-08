@@ -19,6 +19,7 @@
 #include <fstream>
 #include "main.h"
 #include "sketch.h"
+#include "Trie.h"
 
 using namespace std;
 
@@ -336,10 +337,52 @@ int main(int argc, const char * argv[]) {
 //            string b = "1";
 //            s.addBinary(a, b);
 
-            string num1 = "123";
-            string num2 = "456";
-            cout << s.multiply(num1, num2) << endl;
+//            string num1 = "123";
+//            string num2 = "456";
+//            cout << s.multiply(num1, num2) << endl;
 
+//            s.countAndSay(3);
+//            s.compareVersionII("1", "1.1");
+            
+//            ListNode l1(1);
+//            ListNode l1_2(8);
+//            l1.next = &l1_2;
+//            
+//            ListNode l2(0);
+//            
+//            s.addTwoNumbers(&l1, &l2);
+//            vector<int> line = {3,2,6,5,0,3};
+//            s.maxProfitIII(line);
+
+//            Trie trie;
+//            trie.insert("p");
+//            trie.startsWith("pr");
+//            trie.search("p");
+//            trie.insert("pr");
+//            trie.startsWith("pre");
+//            trie.search("pr");
+//            trie.insert("pre");
+//            trie.startsWith("pre");
+//            trie.search("pre");
+
+//            vector<int> nums = {0,0};
+//            s.moveZeroes(nums);
+//            vector<int> nums = {1,1};
+//            cout << s.removeDuplicates3(nums) << endl;
+//            vector<int> preorder = {6, 2, 1, 4, 3, 5, 7, 9, 8};
+//            vector<int> inorder = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+//            s.buildTree(preorder, inorder);
+
+//            vector<int> inorder = {1,3,2};
+//            vector<int> postorder = {3,2,1};
+//            s.buildTree2(inorder, postorder);
+//            vector<int> nums = {1,3};
+//            s.sortedArrayToBST(nums);
+
+            ListNode* head = new ListNode(1);
+            ListNode* end = new ListNode(3);
+            head->next = end;
+            s.sortedListToBST(head);
             
         }
             

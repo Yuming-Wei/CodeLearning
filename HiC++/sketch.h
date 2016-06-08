@@ -17,10 +17,10 @@
 
 using namespace std;
 
+
 class sketch {
 private:
     string name;
-    
 public:
     sketch();
     ~sketch();
