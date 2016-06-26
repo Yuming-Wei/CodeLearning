@@ -18,8 +18,12 @@
 #include <stack>
 #include <fstream>
 #include "main.h"
+#include "Solution.hpp"
 #include "sketch.h"
 #include "Trie.h"
+#include "MyStruct.h"
+#include "MyStack.h"
+#include "MinStack.h"
 
 using namespace std;
 
@@ -36,7 +40,7 @@ int main(int argc, const char * argv[]) {
     switch (CH) {
         case '1':{
             string s = "A";
-            int len = s.length();
+            int len = (int) s.length();
             if(!len) return 0;
             int col = 0;
             for(char c : s) {
@@ -379,11 +383,14 @@ int main(int argc, const char * argv[]) {
 //            vector<int> nums = {1,3};
 //            s.sortedArrayToBST(nums);
 
-            ListNode* head = new ListNode(1);
-            ListNode* end = new ListNode(3);
-            head->next = end;
-            s.sortedListToBST(head);
+//            ListNode* head = new ListNode(1);
+//            ListNode* end = new ListNode(3);
+//            head->next = end;
+//            s.sortedListToBST(head);
             
+            vector<Interval> intervals = {Interval(1,5)};
+            Interval newinterval(2,7);
+            s.insert(intervals, newinterval);
         }
             
         default:
