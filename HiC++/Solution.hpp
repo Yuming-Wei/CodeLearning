@@ -21,6 +21,7 @@ using namespace std;
 #include <stdio.h>
 #include <unordered_map>
 #include <map>
+#include <set>
 #include <queue>
 #include <stack>
 #include "MyStruct.h"
@@ -34,6 +35,12 @@ private:
     vector<int> ans;
     vector<vector<int>> ans2;
 public:
+    bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t);
+    
+    bool containsDuplicate(vector<int>& nums);
+    
+    bool containsNearbyDuplicate(vector<int>& nums, int k);
+    
     vector<Interval> insert(vector<Interval>& intervals, Interval newInterval);
     
     int countNumbersWithUniqueDigits(int n);
@@ -155,7 +162,7 @@ public:
     
     vector<vector<int>> permute(vector<int>& nums);
     
-    void permute_helper(vector<int>& nums, int begin);
+    void permute_helper(vector<int>& nums, vector<vector<int>>& ans, int start);
     
     vector<vector<int>> combine(int n, int k);
     
@@ -262,6 +269,35 @@ public:
     
 };
 
+bool Solution::containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
+    multiset<long long> mySet;
+    for(int i = 0; i < nums.size(); i++) {
+        if(i > k) mySet.erase(nums[i - k - 1]);
+        auto it = mySet.lower_bound(nums[i] - t);
+        if((it != mySet.end())&&(*it - nums[i] <=t)) return true;
+        mySet.insert(nums[i]);
+    }
+    return false;
+}
+
+bool Solution::containsDuplicate(vector<int>& nums) {
+    if((nums.size() == 0) || (nums.size() == 1)) return false;
+    
+    sort(nums.begin(), nums.end());
+    for(int i = 1; i < nums.size(); i++) {
+        if(nums[i] == nums[i - 1]) return true;;
+    }
+    return false;
+}
+
+bool Solution::containsNearbyDuplicate(vector<int>& nums, int k) {
+    unordered_map<int,int> myMap;
+    for(int i = 0; i < nums.size(); i++) {
+        if(myMap.find(nums[i]) != myMap.end()) if(i - myMap[nums[i]] <= k) return true;
+        myMap[nums[i]] = i;
+    }
+    return false;
+}
 
 vector<Interval> Solution::insert(vector<Interval>& intervals, Interval newInterval) {
     // Insert the newInterval into right position according to start
@@ -1313,20 +1349,19 @@ void Solution::nextPermutation(vector<int>& nums) {
 }
 
 vector<vector<int>> Solution::permute(vector<int>& nums) {
-    Solution::ans2.push_back(nums);
-    permute_helper(nums, 1);
-    return Solution::ans2;
+    vector<vector<int>> ans = {};
+    permute_helper(nums, ans, 0);
+    return ans;
 }
 
-void Solution::permute_helper(vector<int>& nums, int begin) {
-    if(begin >= nums.size()) return;
-    for(int i = 0; i< begin; i++) {
-        swap(nums[i], nums[begin]);
-        ans2.push_back(nums);
-        permute_helper(nums, begin + 1);
-        swap(nums[i], nums[begin]);
+void Solution::permute_helper(vector<int>& nums, vector<vector<int>>& ans, int start) {
+    if(start >= nums.size()) ans.push_back(nums);
+    
+    for(int i = start; i < nums.size(); i++) {
+        swap(nums[start], nums[i]);
+        permute_helper(nums, ans, start + 1);
+        swap(nums[start], nums[i]);
     }
-    permute_helper(nums, begin + 1);
 }
 
 vector<vector<int>> Solution::combine(int n, int k) {

@@ -35,6 +35,9 @@
                value = "fs.is_open()">
             </PersistentString>
             <PersistentString
+               value = "map[nums[i]]">
+            </PersistentString>
+            <PersistentString
                value = "nums">
             </PersistentString>
          </PersistentStrings>
@@ -63,10 +66,10 @@
          contextName = "Solution::rob(std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;&amp;):main.h">
       </ContextState>
       <ContextState
-         contextName = "Trie::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;):main.h">
+         contextName = "Solution::containsNearbyAlmostDuplicate(std::__1::vector&lt;int, std::__1::allocator&lt;int&gt; &gt;&amp;, int, int):Solution.hpp">
          <PersistentStrings>
             <PersistentString
-               value = "root">
+               value = "myMap.begin()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -75,6 +78,14 @@
          <PersistentStrings>
             <PersistentString
                value = "(intervals.begin() + i + 1) ==  )intervals.begin() + j)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Trie::insert(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;):main.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "root">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

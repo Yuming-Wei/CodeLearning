@@ -137,6 +137,9 @@ int main(int argc, const char * argv[]) {
         }
             
         case '2':{
+            
+            Solution s;
+            
             //printAZ09();
             //string str = "abcd";
             //cout << str.substr(0,2) << endl;
@@ -161,7 +164,7 @@ int main(int argc, const char * argv[]) {
             cout << st.top() << endl;
              */
             
-            Solution s;
+            
             /*vector<vector<int>> matrix;
             for (int i = 0; i < 5; i++) {
                 vector<int> temp;
@@ -388,9 +391,14 @@ int main(int argc, const char * argv[]) {
 //            head->next = end;
 //            s.sortedListToBST(head);
             
-            vector<Interval> intervals = {Interval(1,5)};
-            Interval newinterval(2,7);
-            s.insert(intervals, newinterval);
+//            vector<Interval> intervals = {Interval(1,5)};
+//            Interval newinterval(2,7);
+//            s.insert(intervals, newinterval);
+            
+            vector<int> nums  = {2,1};
+            int k = 1, t = 1;
+            s.containsNearbyAlmostDuplicate(nums, k, t);
+
         }
             
         default:
