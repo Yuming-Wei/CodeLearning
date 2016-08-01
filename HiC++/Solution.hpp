@@ -26,6 +26,7 @@ using namespace std;
 #include <stack>
 #include "MyStruct.h"
 #include "MyStack.h"
+#include "maxSlidingWindow.h"
 
 
 
@@ -267,7 +268,106 @@ public:
     
     double Cal(char* in);
     
+    vector<vector<string>> partition(string s);
+    void partition_helper(const string& s, int start, int end, vector<string>& line, vector<vector<string>>& ans);
+    bool isPalindrome(const string& s, int left, int right);
+    
+    int minimumTotal(vector<vector<int>>& triangle);
+    
+    vector<int> productExceptSelf(vector<int>& nums);
+    
+    vector<vector<int>> subsets(vector<int>& nums);
+    void subsets_helper(vector<int>& nums, vector<vector<int>>& ans, vector<int>& cur, int begin);
 };
+
+vector<vector<int>> Solution::subsets(vector<int>& nums) {
+    vector<vector<int>> ans;
+    if(nums.empty()) return ans;
+    vector<int> cur;
+    ans.push_back(cur);
+    subsets_helper(nums, ans, cur, 0);
+    return ans;
+}
+
+void Solution::subsets_helper(vector<int>& nums, vector<vector<int>>& ans, vector<int>& cur, int begin) {
+    if(begin >= nums.size()) return;
+    for(int i = begin; i < nums.size(); ++i) {
+        cur.push_back(nums[i]);
+        ans.push_back(cur);
+        subsets_helper(nums, ans, cur, i + 1);
+        cur.pop_back();
+    }
+}
+
+vector<int> Solution::productExceptSelf(vector<int>& nums) {
+//    if(nums.size() == 0) return vector<int> ();
+//    vector<int> ans(nums.size());
+//    int backProduct = 1;
+//    ans[0] = 1;
+//    for(int i = 1; i < nums.size(); ++i) ans[i] = ans[i - 1] *nums[i - 1];
+//    
+//    for(int i  = nums.size() - 2; i >= 0; --i) {
+//        backProduct *= nums[i + 1];
+//        ans[i] *= backProduct;
+//    }
+//    return ans;
+    if(nums.empty()) return vector<int> ();
+    vector<int> ans(nums.size(),1);
+    int left = 1, right = 1;
+    for(int i = 0; i < nums.size(); ++i) {
+        ans[i] *= left;
+        left *= nums[i];
+        ans[nums.size() - i - 1] *= right;
+        right *= nums[nums.size() - i - 1];
+    }
+    return ans;
+    
+}
+
+int Solution::minimumTotal(vector<vector<int>>& triangle) {
+    vector<int> dp(triangle.size(),0);
+    int mark = 0;
+    dp[0] = triangle[0][0];
+    // for(int i = 1; i < triangle.size(); i++) {
+    //     dp[1] = dp[0] + max(triangle[i][mark], triangle[i][mark + 1]);
+    // }
+    return dp[dp.size() - 1];
+}
+
+vector<vector<string>> Solution::partition(string s) {
+    vector<vector<string>> ans = {};
+    vector<string> line = {};
+    partition_helper(s, 0, s.length(), line, ans);
+    
+    return ans;
+}
+
+void Solution::partition_helper(const string& s, int start, int len, vector<string>& line, vector<vector<string>>& ans) {
+    if(len <= 0) {
+        ans.push_back(line);
+        return;
+    }
+    
+    for(int i = 0; i < len; i++) {
+        if(isPalindrome(s, start, start + i)) {
+            string ss = s.substr(start, i + 1);
+            line.push_back(ss);
+            partition_helper(s, start + i + 1, len - i -1, line, ans);
+            line.pop_back();
+        }
+    }
+}
+
+bool Solution::isPalindrome(const string& s, int left, int right) {
+    while(left <= right) {
+        if(s[left] != s[right]) return false;
+        left++;
+        right--;
+    }
+    return true;
+}
+
+
 
 bool Solution::containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
     multiset<long long> mySet;

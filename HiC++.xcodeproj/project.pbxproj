@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B02CF7FE1D4954400056E560 /* VirtualTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualTable.h; sourceTree = "<group>"; };
 		B03161041D1DCA4E003BEEA4 /* MyStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyStack.h; sourceTree = "<group>"; };
 		B03161051D1DCB04003BEEA4 /* MinStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinStack.h; sourceTree = "<group>"; };
 		B031610A1D1DCF6D003BEEA4 /* Solution.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Solution.hpp; sourceTree = "<group>"; };
@@ -31,6 +32,7 @@
 		B07765CB1D1F0D19008B917A /* MyStruct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyStruct.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		B07DE1751CEA3F340064C56E /* Trie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Trie.h; path = ../Trie.h; sourceTree = "<group>"; };
 		B094B8391B597FB500198214 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		B0A297DE1D4979F200FF9A72 /* maxSlidingWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = maxSlidingWindow.h; sourceTree = "<group>"; };
 		B0CE83211B16270B002081C4 /* HiC++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiC++"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0CE83241B16270B002081C4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; };
 		B0EA44351C936EAC00929396 /* sketch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sketch.h; sourceTree = "<group>"; };
@@ -70,11 +72,13 @@
 				B050C4761CA08E3E0022C049 /* test.txt */,
 				B04B3BCB1C9269410066F180 /* example.txt */,
 				B0CE83241B16270B002081C4 /* main.cpp */,
+				B02CF7FE1D4954400056E560 /* VirtualTable.h */,
 				B094B8391B597FB500198214 /* main.h */,
 				B0EA44351C936EAC00929396 /* sketch.h */,
 				B03161041D1DCA4E003BEEA4 /* MyStack.h */,
 				B03161051D1DCB04003BEEA4 /* MinStack.h */,
 				B031610A1D1DCF6D003BEEA4 /* Solution.hpp */,
+				B0A297DE1D4979F200FF9A72 /* maxSlidingWindow.h */,
 				B07765CB1D1F0D19008B917A /* MyStruct.h */,
 			);
 			path = "HiC++";

@@ -24,9 +24,9 @@
 #include "MyStruct.h"
 #include "MyStack.h"
 #include "MinStack.h"
+#include "VirtualTable.h"
 
 using namespace std;
-
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -395,10 +395,19 @@ int main(int argc, const char * argv[]) {
 //            Interval newinterval(2,7);
 //            s.insert(intervals, newinterval);
             
-            vector<int> nums  = {2,1};
-            int k = 1, t = 1;
-            s.containsNearbyAlmostDuplicate(nums, k, t);
+//            vector<int> nums  = {2,1};
+//            int k = 1, t = 1;
+//            s.containsNearbyAlmostDuplicate(nums, k, t);
 
+//            vector<vector<string>> ans = {};
+//            ans = s.partition("aab");
+//            vector<vector<int>> tower = {{10}};
+//            cout << tower.size() << endl;
+//            s.minimumTotal(tower);
+            maxSlidingWindowClass slw;
+            vector<int> vec{1,3,-1,-3,5,3,6,7};
+            slw.maxSlidingWindow(vec, 3);
+            
         }
             
         default:
