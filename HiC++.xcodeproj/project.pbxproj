@@ -23,8 +23,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B04B3BCB1C9269410066F180 /* example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.txt; sourceTree = SOURCE_ROOT; };
-		B050C4761CA08E3E0022C049 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = SOURCE_ROOT; };
 		B0637FA21D5A7A2100CD92C7 /* AbstractFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractFactory.h; sourceTree = "<group>"; };
 		B0637FA31D5A7A2100CD92C7 /* FactoryProducer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryProducer.h; sourceTree = "<group>"; };
 		B0637FA41D5A7A2100CD92C7 /* FindDuplicateArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindDuplicateArray.h; sourceTree = "<group>"; };
@@ -41,6 +39,10 @@
 		B0637FAF1D5A7A2100CD92C7 /* testHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testHeader.h; sourceTree = "<group>"; };
 		B0637FB01D5A7A2100CD92C7 /* VirtualTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualTable.h; sourceTree = "<group>"; };
 		B0637FB21D5A7A3C00CD92C7 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		B0637FBE1D5A7DEB00CD92C7 /* Trie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trie.h; sourceTree = "<group>"; };
+		B0637FC01D5A7DF400CD92C7 /* example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.txt; sourceTree = "<group>"; };
+		B0637FC11D5A7DF400CD92C7 /* IntegerArray.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IntegerArray.txt; sourceTree = "<group>"; };
+		B0637FC21D5A7DF400CD92C7 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
 		B0CE83211B16270B002081C4 /* HiC++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiC++"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -58,6 +60,7 @@
 		B0637FA11D5A7A2100CD92C7 /* header */ = {
 			isa = PBXGroup;
 			children = (
+				B0637FBE1D5A7DEB00CD92C7 /* Trie.h */,
 				B0637FA21D5A7A2100CD92C7 /* AbstractFactory.h */,
 				B0637FA31D5A7A2100CD92C7 /* FactoryProducer.h */,
 				B0637FA41D5A7A2100CD92C7 /* FindDuplicateArray.h */,
@@ -85,11 +88,12 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		B0637FB51D5A7AE500CD92C7 /* resource */ = {
+		B0637FBF1D5A7DF400CD92C7 /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				B050C4761CA08E3E0022C049 /* test.txt */,
-				B04B3BCB1C9269410066F180 /* example.txt */,
+				B0637FC01D5A7DF400CD92C7 /* example.txt */,
+				B0637FC11D5A7DF400CD92C7 /* IntegerArray.txt */,
+				B0637FC21D5A7DF400CD92C7 /* test.txt */,
 			);
 			path = resource;
 			sourceTree = "<group>";
@@ -113,7 +117,7 @@
 		B0CE83231B16270B002081C4 /* HiC++ */ = {
 			isa = PBXGroup;
 			children = (
-				B0637FB51D5A7AE500CD92C7 /* resource */,
+				B0637FBF1D5A7DF400CD92C7 /* resource */,
 				B0637FB11D5A7A3C00CD92C7 /* src */,
 				B0637FA11D5A7A2100CD92C7 /* header */,
 			);
