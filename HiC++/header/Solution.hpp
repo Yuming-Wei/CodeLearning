@@ -278,7 +278,114 @@ public:
     
     vector<vector<int>> subsets(vector<int>& nums);
     void subsets_helper(vector<int>& nums, vector<vector<int>>& ans, vector<int>& cur, int begin);
+    
+    ListNode *detectCycle(ListNode *head);
+    
+    int findDuplicate(vector<int>& nums);
+    
+    ListNode* reverseBetween(ListNode* head, int m, int n);
+    
+    ListNode* partition(ListNode* head, int x);
 };
+
+ListNode* Solution::partition(ListNode* head, int x) {
+    ListNode newHead(0);
+    newHead.next = head;
+    ListNode *cur = head, *small = &newHead, *pre = &newHead;
+    while(cur) {
+        if(small->next && small->next->val < x) small = small->next;
+        if(cur->val < x && pre->val >= x) {
+            pre->next = cur->next;
+            cur->next = small->next;
+            small->next = cur;
+            cur = pre->next;
+            small = small->next;
+        } else {
+            cur = cur->next;
+            pre = pre->next;
+        }
+    }
+    return newHead.next;
+}
+
+ListNode* Solution::reverseBetween(ListNode* head, int m, int n) {
+    if(head == NULL||head->next == NULL) return head;
+    ListNode *pre = NULL, *cur = head, *next, *cutOff;
+    int count = 1;
+    while(cur) {
+        if(count >= m && count <= n) {
+            next = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = next;
+            cutOff->next = pre;
+        }
+        if(count < m) {
+            if(pre == NULL||cutOff == NULL) {
+                pre = head;
+                cutOff = head;
+            } else {
+                pre = pre->next;
+                cutOff = cutOff->next;
+            }
+            cur = cur->next;
+        }
+        count++;
+        if(count > n) break;
+    }
+    if(m > 1) return head;
+    return pre;
+}
+
+
+int Solution::findDuplicate(vector<int>& nums) {
+//    int low = 1, high = nums.size(), mid, count = 0;
+//    
+//    while(low < high) {
+//        mid = (low + high) / 2;
+//        count = 0;
+//        for(int i = 0; i < nums.size(); ++i) {
+//            if(nums[i] >= low && nums[i] <= mid) count++;
+//        }
+//        if(count <= mid - low + 1) low = mid + 1;
+//        else high = mid;
+//    }
+//    return low;
+    
+    if(nums.size() > 0) {
+        int slow = nums[0];
+        int fast = nums[nums[0]];
+        
+        while(slow != fast) {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        fast = 0;
+        while(slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    } else return -1;
+}
+
+
+ListNode* Solution::detectCycle(ListNode *head) {
+    if(head == nullptr || head->next == nullptr) return nullptr;
+    ListNode *fast = head, *slow = head, *entry = head;
+    while(fast->next && fast->next->next) {
+        fast = fast->next->next;
+        slow = slow->next;
+        if(fast == slow) {
+            while(slow != entry) {
+                slow = slow->next;
+                entry = entry->next;
+            }
+            return entry;
+        }
+    }
+    return nullptr;
+}
 
 vector<vector<int>> Solution::subsets(vector<int>& nums) {
     vector<vector<int>> ans;
