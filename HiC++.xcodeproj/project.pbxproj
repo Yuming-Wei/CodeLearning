@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B0CE83251B16270B002081C4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0CE83241B16270B002081C4 /* main.cpp */; };
+		B0637FB31D5A7A3C00CD92C7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0637FB21D5A7A3C00CD92C7 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,19 +23,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B02CF7FE1D4954400056E560 /* VirtualTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualTable.h; sourceTree = "<group>"; };
-		B03161041D1DCA4E003BEEA4 /* MyStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyStack.h; sourceTree = "<group>"; };
-		B03161051D1DCB04003BEEA4 /* MinStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinStack.h; sourceTree = "<group>"; };
-		B031610A1D1DCF6D003BEEA4 /* Solution.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Solution.hpp; sourceTree = "<group>"; };
 		B04B3BCB1C9269410066F180 /* example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.txt; sourceTree = SOURCE_ROOT; };
 		B050C4761CA08E3E0022C049 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = SOURCE_ROOT; };
-		B07765CB1D1F0D19008B917A /* MyStruct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyStruct.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
-		B07DE1751CEA3F340064C56E /* Trie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Trie.h; path = ../Trie.h; sourceTree = "<group>"; };
-		B094B8391B597FB500198214 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
-		B0A297DE1D4979F200FF9A72 /* maxSlidingWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = maxSlidingWindow.h; sourceTree = "<group>"; };
+		B0637FA21D5A7A2100CD92C7 /* AbstractFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractFactory.h; sourceTree = "<group>"; };
+		B0637FA31D5A7A2100CD92C7 /* FactoryProducer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryProducer.h; sourceTree = "<group>"; };
+		B0637FA41D5A7A2100CD92C7 /* FindDuplicateArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindDuplicateArray.h; sourceTree = "<group>"; };
+		B0637FA51D5A7A2100CD92C7 /* LeetCode_1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeetCode_1.h; sourceTree = "<group>"; };
+		B0637FA61D5A7A2100CD92C7 /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		B0637FA71D5A7A2100CD92C7 /* maxSlidingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxSlidingWindow.h; sourceTree = "<group>"; };
+		B0637FA81D5A7A2100CD92C7 /* MinStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinStack.h; sourceTree = "<group>"; };
+		B0637FA91D5A7A2100CD92C7 /* MyStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyStack.h; sourceTree = "<group>"; };
+		B0637FAA1D5A7A2100CD92C7 /* MyStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyStruct.h; sourceTree = "<group>"; };
+		B0637FAB1D5A7A2100CD92C7 /* sketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sketch.h; sourceTree = "<group>"; };
+		B0637FAC1D5A7A2100CD92C7 /* Solution.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Solution.hpp; sourceTree = "<group>"; };
+		B0637FAD1D5A7A2100CD92C7 /* SolutionClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolutionClass.h; sourceTree = "<group>"; };
+		B0637FAE1D5A7A2100CD92C7 /* SolutionFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolutionFactory.h; sourceTree = "<group>"; };
+		B0637FAF1D5A7A2100CD92C7 /* testHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testHeader.h; sourceTree = "<group>"; };
+		B0637FB01D5A7A2100CD92C7 /* VirtualTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualTable.h; sourceTree = "<group>"; };
+		B0637FB21D5A7A3C00CD92C7 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B0CE83211B16270B002081C4 /* HiC++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiC++"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B0CE83241B16270B002081C4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; };
-		B0EA44351C936EAC00929396 /* sketch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sketch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +55,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0637FA11D5A7A2100CD92C7 /* header */ = {
+			isa = PBXGroup;
+			children = (
+				B0637FA21D5A7A2100CD92C7 /* AbstractFactory.h */,
+				B0637FA31D5A7A2100CD92C7 /* FactoryProducer.h */,
+				B0637FA41D5A7A2100CD92C7 /* FindDuplicateArray.h */,
+				B0637FA51D5A7A2100CD92C7 /* LeetCode_1.h */,
+				B0637FA61D5A7A2100CD92C7 /* main.h */,
+				B0637FA71D5A7A2100CD92C7 /* maxSlidingWindow.h */,
+				B0637FA81D5A7A2100CD92C7 /* MinStack.h */,
+				B0637FA91D5A7A2100CD92C7 /* MyStack.h */,
+				B0637FAA1D5A7A2100CD92C7 /* MyStruct.h */,
+				B0637FAB1D5A7A2100CD92C7 /* sketch.h */,
+				B0637FAC1D5A7A2100CD92C7 /* Solution.hpp */,
+				B0637FAD1D5A7A2100CD92C7 /* SolutionClass.h */,
+				B0637FAE1D5A7A2100CD92C7 /* SolutionFactory.h */,
+				B0637FAF1D5A7A2100CD92C7 /* testHeader.h */,
+				B0637FB01D5A7A2100CD92C7 /* VirtualTable.h */,
+			);
+			path = header;
+			sourceTree = "<group>";
+		};
+		B0637FB11D5A7A3C00CD92C7 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				B0637FB21D5A7A3C00CD92C7 /* main.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		B0637FB51D5A7AE500CD92C7 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				B050C4761CA08E3E0022C049 /* test.txt */,
+				B04B3BCB1C9269410066F180 /* example.txt */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
 		B0CE83181B16270B002081C4 = {
 			isa = PBXGroup;
 			children = (
@@ -68,18 +113,9 @@
 		B0CE83231B16270B002081C4 /* HiC++ */ = {
 			isa = PBXGroup;
 			children = (
-				B07DE1751CEA3F340064C56E /* Trie.h */,
-				B050C4761CA08E3E0022C049 /* test.txt */,
-				B04B3BCB1C9269410066F180 /* example.txt */,
-				B0CE83241B16270B002081C4 /* main.cpp */,
-				B02CF7FE1D4954400056E560 /* VirtualTable.h */,
-				B094B8391B597FB500198214 /* main.h */,
-				B0EA44351C936EAC00929396 /* sketch.h */,
-				B03161041D1DCA4E003BEEA4 /* MyStack.h */,
-				B03161051D1DCB04003BEEA4 /* MinStack.h */,
-				B031610A1D1DCF6D003BEEA4 /* Solution.hpp */,
-				B0A297DE1D4979F200FF9A72 /* maxSlidingWindow.h */,
-				B07765CB1D1F0D19008B917A /* MyStruct.h */,
+				B0637FB51D5A7AE500CD92C7 /* resource */,
+				B0637FB11D5A7A3C00CD92C7 /* src */,
+				B0637FA11D5A7A2100CD92C7 /* header */,
 			);
 			path = "HiC++";
 			sourceTree = "<group>";
@@ -140,7 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0CE83251B16270B002081C4 /* main.cpp in Sources */,
+				B0637FB31D5A7A3C00CD92C7 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
