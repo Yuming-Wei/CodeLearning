@@ -290,6 +290,7 @@ public:
     ListNode* swapPairs(ListNode* head);
     
     ListNode* rotateRight(ListNode* head, int k);
+    
 };
 
 ListNode* Solution::rotateRight(ListNode* head, int k) {
@@ -380,6 +381,7 @@ ListNode* Solution::reverseBetween(ListNode* head, int m, int n) {
 
 
 int Solution::findDuplicate(vector<int>& nums) {
+    
 //    int low = 1, high = nums.size(), mid, count = 0;
 //    
 //    while(low < high) {
