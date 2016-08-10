@@ -20,11 +20,12 @@
 #include "main.h"
 #include "Solution.hpp"
 #include "sketch.h"
-//#include "Trie.h"
+#include "Trie.h"
 #include "MyStruct.h"
 #include "MyStack.h"
 #include "MinStack.h"
 #include "VirtualTable.h"
+#include "ListClass.h"
 
 using namespace std;
 
@@ -306,16 +307,23 @@ int main(int argc, const char * argv[]) {
 //    AbstractFactory *af = fp.createFactoryByName("Solution");
 //    SolutionClass *sol = af->createSolution("LeetCode_1");
 //    sol->runThisMethod();
-
-    ListNode l1(5);
-    ListNode l2(6);
-    ListNode l3(7);
-    ListNode l4(8);
-    l1.next = &l2;
-    l2.next = &l3;
-    l3.next = &l4;
+//
+//    ListNode l1(5);
+//    ListNode l2(6);
+//    ListNode l3(7);
+//    ListNode l4(8);
+//    l1.next = &l2;
+//    l2.next = &l3;
+//    l3.next = &l4;
+//    
+//    s.reverseBetween(&l1, 2, 3);
     
-    s.reverseBetween(&l1, 2, 3);
+
+    vector<int> nums{1,2};
+    ListClass ls;
+    ListNode *lst = ls.makeList(nums);
+    s.swapPairs(lst);
+    
     
     return 0;
 }

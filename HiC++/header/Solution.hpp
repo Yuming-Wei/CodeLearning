@@ -286,10 +286,60 @@ public:
     ListNode* reverseBetween(ListNode* head, int m, int n);
     
     ListNode* partition(ListNode* head, int x);
+    
+    ListNode* swapPairs(ListNode* head);
+    
+    ListNode* rotateRight(ListNode* head, int k);
 };
 
-ListNode* Solution::partition(ListNode* head, int x) {
+ListNode* Solution::rotateRight(ListNode* head, int k) {
     ListNode newHead(0);
+    newHead.next = head;
+    ListNode newhead(0), *fast = head, *slow;
+    if(head == NULL || head->next == NULL) return head;
+    int count = 1, len = 1;
+    // Find the length of the ListNode in case the rotate place is very large
+    while(fast->next) {
+        len++;
+        fast = fast->next;
+    }
+    // Find the relative place shift based on the ListNode length
+    k = len - k%len;
+    if(k == 0) return head;
+    fast = head;
+    count = 1;
+    // Find the node ready to rotate
+    while(count < k) {
+        fast = fast->next;
+        count++;
+    }
+    slow = fast;
+    // Find the end of ListNode
+    while(fast&&fast->next) fast = fast->next;
+    fast->next = newHead.next;
+    newHead.next = slow->next;
+    slow->next = NULL;
+    return newHead.next;
+}
+
+ListNode* Solution::swapPairs(ListNode* head) {
+    ListNode newHead(0);
+    newHead.next = head;
+    ListNode *pre = &newHead, *cur = head, *next, *temp = NULL;
+    while(cur && cur->next) {
+        next = cur->next;
+        temp = next->next;
+        pre->next = next;
+        cur->next = temp;
+        next->next = cur;
+        pre = cur;
+        cur = cur->next;
+    }
+    return newHead.next;
+}
+
+ListNode* Solution::partition(ListNode* head, int x) {
+    ListNode newHead(INT_MIN);
     newHead.next = head;
     ListNode *cur = head, *small = &newHead, *pre = &newHead;
     while(cur) {
@@ -310,31 +360,22 @@ ListNode* Solution::partition(ListNode* head, int x) {
 
 ListNode* Solution::reverseBetween(ListNode* head, int m, int n) {
     if(head == NULL||head->next == NULL) return head;
-    ListNode *pre = NULL, *cur = head, *next, *cutOff;
+    ListNode newHead(0);
+    newHead.next = head;
+    ListNode *pre = &newHead, *cur = head, *next;
     int count = 1;
-    while(cur) {
-        if(count >= m && count <= n) {
-            next = cur->next;
-            cur->next = pre;
-            pre = cur;
-            cur = next;
-            cutOff->next = pre;
-        }
-        if(count < m) {
-            if(pre == NULL||cutOff == NULL) {
-                pre = head;
-                cutOff = head;
-            } else {
-                pre = pre->next;
-                cutOff = cutOff->next;
-            }
+    if(m == n) return head;
+    while(count < n) {
+        while(count++ < m) {
+            pre = pre->next;
             cur = cur->next;
         }
-        count++;
-        if(count > n) break;
+        next = cur->next;
+        cur->next = next->next;
+        next->next = pre->next;
+        pre->next = next;
     }
-    if(m > 1) return head;
-    return pre;
+    return newHead.next;
 }
 
 
