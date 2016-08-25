@@ -43,6 +43,7 @@
 		B0637FC01D5A7DF400CD92C7 /* example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.txt; sourceTree = "<group>"; };
 		B0637FC11D5A7DF400CD92C7 /* IntegerArray.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IntegerArray.txt; sourceTree = "<group>"; };
 		B0637FC21D5A7DF400CD92C7 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
+		B072AE331D6F5F5E007651A1 /* hard-test-case10x10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "hard-test-case10x10.txt"; path = "HiC++/resource/hard-test-case10x10.txt"; sourceTree = SOURCE_ROOT; };
 		B0A6076C1D5B721E0020B2BE /* ListClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListClass.h; sourceTree = "<group>"; };
 		B0CE83211B16270B002081C4 /* HiC++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiC++"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -93,6 +94,7 @@
 		B0637FBF1D5A7DF400CD92C7 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				B072AE331D6F5F5E007651A1 /* hard-test-case10x10.txt */,
 				B0637FC01D5A7DF400CD92C7 /* example.txt */,
 				B0637FC11D5A7DF400CD92C7 /* IntegerArray.txt */,
 				B0637FC21D5A7DF400CD92C7 /* test.txt */,

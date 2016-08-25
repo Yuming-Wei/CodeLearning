@@ -17,6 +17,7 @@
 #include <queue>
 #include <stack>
 #include <fstream>
+#include <unordered_set>
 #include "main.h"
 #include "Solution.hpp"
 #include "sketch.h"
@@ -28,6 +29,10 @@
 #include "ListClass.h"
 
 using namespace std;
+
+void my_Fun() {
+    cout << "test!" << endl;
+}
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -318,12 +323,28 @@ int main(int argc, const char * argv[]) {
 //    
 //    s.reverseBetween(&l1, 2, 3);
     
+//    vector<int> nums{1,2};
+//    ListClass ls;
+//    ListNode *lst = ls.makeList(nums);
+//    s.swapPairs(lst);
+    
+//    vector<int> nums{20,1};
+//    s.largestNumber(nums);
 
-    vector<int> nums{1,2};
-    ListClass ls;
-    ListNode *lst = ls.makeList(nums);
-    s.swapPairs(lst);
+//    s.getSum(1, 2);
+//    string str = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";
+//    s.findRepeatedDnaSequences(str);
+//    vector<int> nums = {1,1,1,2,2,3};
+//    s.topKFrequent(nums, 2);
+
+//    string str = "12312322";
+//    s.lengthOfLongestSubstring(str);
+
+//    unordered_set<string> dict = {"aaaa","aaa"};
+//    string str = "aaaaaaa";
+//    s.wordBreak(str, dict);
+
+    int i,j;
+    cout << ((i=j)=2);
     
-    
-    return 0;
 }

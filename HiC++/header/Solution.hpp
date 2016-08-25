@@ -22,6 +22,7 @@ using namespace std;
 #include <unordered_map>
 #include <map>
 #include <set>
+#include <unordered_set>
 #include <queue>
 #include <stack>
 #include "MyStruct.h"
@@ -291,7 +292,232 @@ public:
     
     ListNode* rotateRight(ListNode* head, int k);
     
+    string largestNumber(vector<int>& nums);
+    
+    bool isPowerOfFour(int num);
+    
+    int getSum(int a, int b);
+    
+    vector<string> findRepeatedDnaSequences(string s);
+    
+    vector<int> topKFrequent(vector<int> &nums, int k);
+    
+    int lengthOfLongestSubstring(string s);
+    
+    bool wordBreak(string s, unordered_set<string>& wordDict);
+    bool wordBreakHelper(const string s, unordered_set<string>& wordDict, int begin);
+    
 };
+
+int subConnectedCells(vector<vector<int>>& grid, int x, int y, int row, int col) {
+    // Not a cell, return count 0
+    if(grid[x][y] == 0) return 0;
+    // If it’s the bottom right lot, return 1 since no more sub lot.
+    if(x == row - 1 && y == col - 1) return 1;
+    // If reach the bottom row, just search the lot on the right
+    if(x == row - 1) return subConnectedCells(grid, x, y + 1, row, col) + 1;
+    // If reach the rightmost row, just search the lot below
+    if(y == col - 1) return subConnectedCells(grid, x + 1, y, row, col) + 1;
+    // Return sum of cell count from right, below and right below lots.
+    return subConnectedCells(grid, x + 1, y, row, col) + subConnectedCells(grid, x + 1, y + 1, row, col) + subConnectedCells(grid, x, y + 1, row, col) + 1;
+}
+
+int connectedCells(vector<vector<int>>& grid) {
+    int row, col, maxCount = 0;
+    if((row = grid.size()) == 0) return 0;
+    if((col = grid[0].size()) == 0) return 0;
+    for(int i = 0; i < row - 1; ++i) {
+        for(int j = 0; j < col - 1; ++j) {
+            if(grid[i][j] != 0 ) {
+                grid[i][j] = subConnectedCells(grid, i, j, row, col);
+            }
+        }
+    }
+    for(int i = 0; i < row; ++i) {
+        for(int j = 0; j < col; ++j) {
+            maxCount = max(maxCount, grid[i][j]);
+        }
+    }
+    return maxCount;
+}
+
+
+bool Solution::wordBreak(string s, unordered_set<string>& wordDict) {
+    if(s.length() == 0) return false;
+    return wordBreakHelper(s, wordDict, 0);
+}
+bool Solution::wordBreakHelper(const string s, unordered_set<string>& wordDict, int begin) {
+    if(begin < s.length()) {
+        for(int i = 0; i <= s.length() - begin; ++i) {
+            if(wordDict.find(s.substr(begin, i)) != wordDict.end()) {
+                return wordBreakHelper(s, wordDict, begin + i);
+            }
+        }
+        return false;
+    } else return true;
+}
+
+int maxPoints(vector<Point>& points) {
+    unordered_map<int,int> xMp, yMp;
+    int maxCount = 0;
+    for(int i = 0; i < points.size(); ++i) {
+        xMp[points[i].x]++;
+        yMp[points[i].y]++;
+    }
+    
+    for(auto it = xMp.begin(); it !=xMp.end(); ++it) {
+        maxCount = max(maxCount, it->second);
+    }
+    for(auto it = yMp.begin(); it !=yMp.end(); ++it) {
+        maxCount = max(maxCount, it->second);
+    }
+    return maxCount;
+}
+
+int Solution::lengthOfLongestSubstring(string s) {
+    vector<int> dict(256,-1);
+    int start = -1, maxLen = 0;
+    for(int i = 0; i < s.length(); ++i) {
+        if(dict[s[i]] > -1) {
+            start = dict[s[i]];
+        }
+        dict[s[i]] = i;
+        maxLen = max(maxLen, i - start);
+    }
+    return maxLen;
+}
+
+vector<int> Solution::topKFrequent(vector<int> &nums, int k) {
+    unordered_map<int,int> myMap;
+    priority_queue<pair<int,int>> pq;
+    vector<int> ans;
+    for(auto e : nums) myMap[e]++;
+    for(auto iter = myMap.begin(); iter != myMap.end(); ++iter) {
+        pq.emplace(iter->second, iter->first);
+    }
+    while(k) {
+        ans.push_back(pq.top().second);
+        pq.pop();
+        k--;
+    }
+    return ans;
+}
+
+vector<string> Solution::findRepeatedDnaSequences(string s) {
+    vector<string> ans;
+    if(s.length() < 11) return ans;
+    unordered_map<int,int> hashMap;
+    int hashKey = 0;
+    for(int i = 0; i < 9; ++i) hashKey = (hashKey << 2) | ((s[i] - 'A' + 1) % 5);
+    for(int j = 9; j < s.length(); ++j) {
+        hashKey = ((hashKey << 2) | ((s[j] - 'A' + 1) % 5)) & 0xfffff;
+        if(hashMap[hashKey]++ == 1) {
+            ans.push_back(s.substr(j - 9, 10));
+        }
+    }
+    return ans;
+}
+
+
+int Solution::getSum(int a, int b) {
+    int carry = 0, sum = 0, bitA, bitB;
+    for(int i = 0; i < 32; ++i) {
+        bitA = a & (1 << i);
+        bitB = b & (1 << i);
+        carry = carry << i;
+        sum = sum + bitA^bitB^carry;
+        if((bitA&bitB)||(bitB&carry)||(bitA&carry)) carry = 1;
+        else carry = 0;
+    }
+    return sum;
+}
+
+bool Solution::isPowerOfFour(int num) {
+    if(num <= 0) return false;
+    if(num == 1) return true;
+    if(num%4 != 0) return false;
+    return isPowerOfFour(num/4);
+}
+
+static bool compareFunction(int x, int y) {
+//    string strX = to_string(x), strY = to_string(y);
+//    return strX + strY > strY + strX;
+     int xLen = 0, yLen = 0;
+     int tmp1 = x, tmp2 = y;
+     deque<int> xDigit, yDigit;
+     while(tmp1) {
+         xLen++;
+         xDigit.push_back(tmp1%10);
+         tmp1 /= 10;
+     }
+     while(tmp2) {
+         yLen++;
+         yDigit.push_back(tmp2%10);
+         tmp2 /= 10;
+     }
+     
+     if(xLen > yLen) {
+         for(int i = xLen - 1; i >= yLen; --i) {
+             yDigit.push_back(xDigit[i]);
+         }
+     } else if(xLen < yLen) {
+         for(int i = yLen - 1; i >= xLen; --i) {
+             xDigit.push_back(yDigit[i]);
+         }
+     }
+     
+     for(int j = 0; j < max(xLen, yLen); ++j) {
+         if(xDigit[j] < yDigit[j]) return true;
+         if(xDigit[j] > yDigit[j]) return false;
+     }
+     return false;
+}
+
+string Solution::largestNumber(vector<int>& nums) {
+    string ans = "";
+    sort(nums.begin(), nums.end(), compareFunction);
+    if(nums[0] == 0) return "0";
+    for(int i = 0; i < nums.size(); ++i) {
+        ans += to_string(nums[i]);
+    }
+    return ans;
+}
+
+void reorderList(ListNode* head) {
+    if(head == NULL || head->next == NULL) return;
+    ListNode *slow = head, *fast = head;
+    ListNode *pre = NULL, *cur, *next;
+    ListNode *revHead, *tempLeft, *tempRight;
+    
+    // Find the midpoint
+    while(fast->next && fast->next->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    
+    // Reverse the List from slow
+    cur = slow;
+    while(cur && cur->next) {
+        next = cur->next;;
+        cur->next = pre;
+        pre = cur;
+        cur = next;
+    }
+    cur->next = pre;
+    revHead = cur;
+    
+    // Reorder the list
+    cur = head;
+    while(cur != NULL && revHead != NULL) {
+        tempLeft = cur->next;
+        tempRight = revHead->next;
+        cur->next = revHead;
+        revHead->next = tempLeft;
+        cur = tempLeft;
+        revHead = tempRight;
+    }
+    return;
+}
 
 ListNode* Solution::rotateRight(ListNode* head, int k) {
     ListNode newHead(0);
