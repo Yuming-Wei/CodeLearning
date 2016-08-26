@@ -14,8 +14,8 @@
 		B0CE831F1B16270B002081C4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = usr/share/man/man1;
+			dstSubfolderSpec = 16;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
@@ -43,8 +43,14 @@
 		B0637FC01D5A7DF400CD92C7 /* example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = example.txt; sourceTree = "<group>"; };
 		B0637FC11D5A7DF400CD92C7 /* IntegerArray.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IntegerArray.txt; sourceTree = "<group>"; };
 		B0637FC21D5A7DF400CD92C7 /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
-		B072AE331D6F5F5E007651A1 /* hard-test-case10x10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "hard-test-case10x10.txt"; path = "HiC++/resource/hard-test-case10x10.txt"; sourceTree = SOURCE_ROOT; };
+		B072AE341D6F5FED007651A1 /* ConnectedCellsInGrid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectedCellsInGrid.h; sourceTree = "<group>"; };
+		B072AE351D6F678A007651A1 /* hard-test-case10x10.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hard-test-case10x10.txt"; sourceTree = "<group>"; };
 		B0A6076C1D5B721E0020B2BE /* ListClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListClass.h; sourceTree = "<group>"; };
+		B0C4C9241D70CC1500A5C5B6 /* hard-test-case5x4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hard-test-case5x4.txt"; sourceTree = "<group>"; };
+		B0C4C9251D70CDA800A5C5B6 /* hard-test-case25x25.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hard-test-case25x25.txt"; sourceTree = "<group>"; };
+		B0C4C9261D70CDA800A5C5B6 /* hard-test-case50x50.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hard-test-case50x50.txt"; sourceTree = "<group>"; };
+		B0C4C9271D70CDA800A5C5B6 /* hard-test-case100x100.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hard-test-case100x100.txt"; sourceTree = "<group>"; };
+		B0C4C9281D70CDA800A5C5B6 /* hard-test-case1000x1000.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "hard-test-case1000x1000.txt"; sourceTree = "<group>"; };
 		B0CE83211B16270B002081C4 /* HiC++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "HiC++"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -79,6 +85,7 @@
 				B0637FAF1D5A7A2100CD92C7 /* testHeader.h */,
 				B0637FB01D5A7A2100CD92C7 /* VirtualTable.h */,
 				B0A6076C1D5B721E0020B2BE /* ListClass.h */,
+				B072AE341D6F5FED007651A1 /* ConnectedCellsInGrid.h */,
 			);
 			path = header;
 			sourceTree = "<group>";
@@ -94,7 +101,12 @@
 		B0637FBF1D5A7DF400CD92C7 /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				B072AE331D6F5F5E007651A1 /* hard-test-case10x10.txt */,
+				B0C4C9251D70CDA800A5C5B6 /* hard-test-case25x25.txt */,
+				B0C4C9261D70CDA800A5C5B6 /* hard-test-case50x50.txt */,
+				B0C4C9271D70CDA800A5C5B6 /* hard-test-case100x100.txt */,
+				B0C4C9281D70CDA800A5C5B6 /* hard-test-case1000x1000.txt */,
+				B0C4C9241D70CC1500A5C5B6 /* hard-test-case5x4.txt */,
+				B072AE351D6F678A007651A1 /* hard-test-case10x10.txt */,
 				B0637FC01D5A7DF400CD92C7 /* example.txt */,
 				B0637FC11D5A7DF400CD92C7 /* IntegerArray.txt */,
 				B0637FC21D5A7DF400CD92C7 /* test.txt */,
@@ -154,6 +166,9 @@
 		B0CE83191B16270B002081C4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "My AD";
 				TargetAttributes = {

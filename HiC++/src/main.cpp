@@ -27,6 +27,7 @@
 #include "MinStack.h"
 #include "VirtualTable.h"
 #include "ListClass.h"
+#include "ConnectedCellsInGrid.h"
 
 using namespace std;
 
@@ -37,7 +38,7 @@ void my_Fun() {
 int main(int argc, const char * argv[]) {
     // insert code here...
     cout << " This is the test for C++ project coding in XCode! Seems it works!";
-    cout << "Hello, World!\n";
+    cout << "Hello, World!!!!!!\n";
             
     Solution s;
     
@@ -344,7 +345,6 @@ int main(int argc, const char * argv[]) {
 //    string str = "aaaaaaa";
 //    s.wordBreak(str, dict);
 
-    int i,j;
-    cout << ((i=j)=2);
-    
+    ConnectedCellsInGridClass cell;
+    cell.run();
 }

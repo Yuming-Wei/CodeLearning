@@ -309,7 +309,7 @@ public:
     
 };
 
-int subConnectedCells(vector<vector<int>>& grid, int x, int y, int row, int col) {
+/*int subConnectedCells(vector<vector<int>>& grid, int x, int y, int row, int col) {
     // Not a cell, return count 0
     if(grid[x][y] == 0) return 0;
     // If it’s the bottom right lot, return 1 since no more sub lot.
@@ -340,7 +340,7 @@ int connectedCells(vector<vector<int>>& grid) {
     }
     return maxCount;
 }
-
+*/
 
 bool Solution::wordBreak(string s, unordered_set<string>& wordDict) {
     if(s.length() == 0) return false;
