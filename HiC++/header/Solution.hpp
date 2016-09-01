@@ -30,7 +30,6 @@ using namespace std;
 #include "maxSlidingWindow.h"
 
 
-
 class Solution {
 private:
     stack<int> myQueue,trans;
@@ -152,9 +151,10 @@ public:
     /*
      Ternery System
      0 1 2
-     0 0 1 2
-     1 1 2 0
-     2 2 0 1
+     ------\
+     0 0 1 | 2
+     1 1 2 | 0
+     2 2 0 | 1
      */
     int singleNumber2(vector<int>& nums);
     
@@ -307,40 +307,54 @@ public:
     bool wordBreak(string s, unordered_set<string>& wordDict);
     bool wordBreakHelper(const string s, unordered_set<string>& wordDict, int begin);
     
+    string getHint(string secret, string guess);
+    
+    vector<vector<string>> groupAnagrams(vector<string>& strs);
 };
 
-/*int subConnectedCells(vector<vector<int>>& grid, int x, int y, int row, int col) {
-    // Not a cell, return count 0
-    if(grid[x][y] == 0) return 0;
-    // If it’s the bottom right lot, return 1 since no more sub lot.
-    if(x == row - 1 && y == col - 1) return 1;
-    // If reach the bottom row, just search the lot on the right
-    if(x == row - 1) return subConnectedCells(grid, x, y + 1, row, col) + 1;
-    // If reach the rightmost row, just search the lot below
-    if(y == col - 1) return subConnectedCells(grid, x + 1, y, row, col) + 1;
-    // Return sum of cell count from right, below and right below lots.
-    return subConnectedCells(grid, x + 1, y, row, col) + subConnectedCells(grid, x + 1, y + 1, row, col) + subConnectedCells(grid, x, y + 1, row, col) + 1;
+vector<vector<string>> Solution::groupAnagrams(vector<string>& strs) {
+//    unordered_map<string,vector<string>> myMap;
+//    vector<vector<string>> ans;
+//    string tmp = "";
+//    for(int i = 0; i < strs.size(); ++i) {
+//        tmp = strs[i];
+//        sort(tmp.begin(), tmp.end());
+//        myMap[tmp].push_back(strs[i]);
+//    }
+//    for(auto &it : myMap) ans.push_back(it.second);
+//    return ans;
+    unordered_map<string, int> myMap;
+    vector<vector<string>> ans;
+    vector<string> tmpVector = {};
+    int count = 1;
+    string tmpStr;
+    
+    for(auto str : strs) {
+        tmpStr = str;
+        sort(tmpStr.begin(), tmpStr.end());
+        if(myMap[tmpStr] == 0) {
+            tmpVector.push_back(str);
+            ans.push_back(tmpVector);
+            myMap[tmpStr] = count++;
+            tmpVector.clear();
+        } else {
+            ans[myMap[tmpStr] - 1].push_back(str);
+        }
+    }
+    
+    return ans;
 }
 
-int connectedCells(vector<vector<int>>& grid) {
-    int row, col, maxCount = 0;
-    if((row = grid.size()) == 0) return 0;
-    if((col = grid[0].size()) == 0) return 0;
-    for(int i = 0; i < row - 1; ++i) {
-        for(int j = 0; j < col - 1; ++j) {
-            if(grid[i][j] != 0 ) {
-                grid[i][j] = subConnectedCells(grid, i, j, row, col);
-            }
-        }
+string Solution::getHint(string secret, string guess) {
+    int A = 0, B = 0, tmpCount = 0;
+    unordered_map<int,int> myMap;
+    for(int i = 0; i < secret.length(); ++i) {
+        if(secret[i] == guess[i]) A++;
+        else myMap[secret[i]]++;
     }
-    for(int i = 0; i < row; ++i) {
-        for(int j = 0; j < col; ++j) {
-            maxCount = max(maxCount, grid[i][j]);
-        }
-    }
-    return maxCount;
+    for(int i = 0; i < secret.length(); ++i) if(secret[i] != guess[i]) if(--myMap[guess[i]] >= 0) B++;
+    return to_string(A) + "A" + to_string(B) + "B";
 }
-*/
 
 bool Solution::wordBreak(string s, unordered_set<string>& wordDict) {
     if(s.length() == 0) return false;
@@ -2104,18 +2118,14 @@ vector<vector<int>> Solution::generate2(int numRows) {
 }
 
 bool Solution::isAnagram(string s, string t) {
-    int sum1 = 0, sum2 = 0;
-    int len_s = s.length();
-    int len_t = t.length();
-    
-    for(int i = 0; i < len_s; i++) {
-        sum1 += s[i];
+    if(s.length() != t.length()) return false;
+    int mp[256] = {0};
+    for(int i = 0; i < s.length(); i++) {
+        mp[s[i]]++;
+        mp[t[i]]--;
     }
-    for(int j = 0; j < len_t; j++) {
-        sum2 += t[j];
-    }
-    if(sum1 == sum2) return true;
-    return false;
+    for(int i = 0; i < 26; ++i) if(mp[i]) return false;
+    return true;
 }
 
 ListNode* Solution::mergeTwoLists(ListNode* l1, ListNode* l2) {
