@@ -354,5 +354,17 @@ int main(int argc, const char * argv[]) {
 //    vector<string> strs = {"", ""};
 //    s.groupAnagrams(strs);
 
+//    vector<vector<char>> matrix;
+//    vector<char> line = {'1', '0', '1', '0', '0'};
+//    vector<char> line2 = {'1', '0', '1', '1', '1'};
+//    vector<char> line3 = {'1', '1', '1', '1', '1'};
+//    vector<char> line4 = {'1', '0', '0', '1', '0'};
+//    matrix.push_back(line);
+//    matrix.push_back(line2);
+//    matrix.push_back(line3);
+//    matrix.push_back(line4);
+//    cout << s.maximalRectangle(matrix);
+    cout << s.myPow(8.0314, 3) << endl;
+    
     
 }

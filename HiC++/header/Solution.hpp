@@ -310,9 +310,87 @@ public:
     string getHint(string secret, string guess);
     
     vector<vector<string>> groupAnagrams(vector<string>& strs);
+    
+    int firstMissingPositive(vector<int>& nums);
+    
+    int maximalRectangle(vector<vector<char>>& matrix);
+    int countCellAround(vector<vector<char>>& matrix, vector<vector<bool>>& visited, int x, int y, int row, int col, stack<pair<int,int>>& posStack);
+    
+    int powMod(int x, int y);
+    int superPow(int a, vector<int>& b);
+    
 };
 
+int Solution::powMod(int x, int y) {
+    int ret = 1;
+    x %= 1337;
+    for(int i = 0 ; i < y; ++i) ret = (ret * x) %1337;
+    return ret;
+}
+
+int Solution::superPow(int a, vector<int>& b) {
+    if(a == 1 || b.empty()) return 1;
+    int last = b.back();
+    b.pop_back();
+    return powMod(superPow(a,b),10)*powMod(a,last)%1337;
+}
+
+int Solution::maximalRectangle(vector<vector<char>>& matrix) {
+    int row = matrix.size();
+    if(row == 0) return 0;
+    int col = matrix[0].size();
+    if(col == 0) return 0;
+    int xPos, yPos, maxCount = 0, cellCount = 0;
+    vector<vector<bool>> visited(row, vector<bool>(col, false));
+    stack<pair<int,int>> posStack;
+    
+    for(int i = 0; i < row; ++i) {
+        for(int j = 0; j < col; ++j) {
+            posStack.push(make_pair(i,j));
+            while(posStack.size() != 0) {
+                xPos = posStack.top().first;
+                yPos = posStack.top().second;
+                posStack.pop();
+                cellCount += countCellAround(matrix, visited, i, j, row, col, posStack);
+            }
+            maxCount = max(maxCount, cellCount);
+            cellCount = 0;
+        }
+    }
+    return maxCount;
+}
+
+int Solution::countCellAround(vector<vector<char>>& matrix, vector<vector<bool>>& visited, int x, int y, int row, int col, stack<pair<int,int>>& posStack) {
+    if(x < 0 || x >= row || y < 0 || y >= col) return 0;
+    if(matrix[x][y] == '0' || visited[x][y] == true) return 0;
+    visited[x][y] = true;
+    int dirX[] = {-1, -1, -1, 0 ,0 , 1, 1, 1};
+    int dirY[] = {-1, 0, 1, -1, 1, -1, 0, 1};
+    for(int m = 0; m < 8; ++m) {
+        int xPos = x + dirX[m];
+        int yPos = y + dirY[m];
+        if(xPos >= 0 && xPos < row && yPos >= 0 && yPos < col)
+            if(visited[xPos][yPos] != true && matrix[xPos][yPos] != '0')
+                posStack.push(make_pair(xPos, yPos));
+    }
+    return 1;
+}
+
+
+int Solution::firstMissingPositive(vector<int>& nums) {
+    int n = nums.size();
+    for(int i = 0; i < n; ++i)
+        while(nums[i] > 0 && nums[i] < n && nums[nums[i] - 1] != nums[i])
+            swap(nums[i], nums[nums[i] - 1]);
+    
+    for(int i = 0; i < n; ++i) if(nums[i] != i + 1) return i + 1;
+    
+    return n + 1;
+}
+
+
 vector<vector<string>> Solution::groupAnagrams(vector<string>& strs) {
+//    // method 1
 //    unordered_map<string,vector<string>> myMap;
 //    vector<vector<string>> ans;
 //    string tmp = "";
@@ -323,6 +401,7 @@ vector<vector<string>> Solution::groupAnagrams(vector<string>& strs) {
 //    }
 //    for(auto &it : myMap) ans.push_back(it.second);
 //    return ans;
+    
     unordered_map<string, int> myMap;
     vector<vector<string>> ans;
     vector<string> tmpVector = {};
@@ -927,13 +1006,16 @@ int Solution::integerBreak(int n) {
     return pow(3,n/3 - 1)*4;
 }
 
-double myPow(double x, int n) {
+double Solution::myPow(double x, int n) {
     if(n == 0 || x == 1) return 1.0;
-    if(n == INT_MIN) return (double) 1/(x*myPow(x,INT_MAX));
-    if(n < 0) return (double) 1/myPow(x,0-n);
-    if(n%2 == 0) return myPow(x*x, n/2);
-    return x*myPow(x,n-1);
+    if(n == 1) return x;
+    if(n == INT_MIN) return 1.0/(x*myPow(x,INT_MAX));
+    if(n < 0) return 1.0/myPow(x,-n);
+    return myPow(x*x, n/2)*myPow(x, n%2);
+    // if(n%2 == 0) return myPow(x*x, n/2);
+    // return x*myPow(x,n-1);
 }
+
 
 TreeNode* Solution::sortedListToBST(ListNode* head) {
     if(!head) return nullptr;
