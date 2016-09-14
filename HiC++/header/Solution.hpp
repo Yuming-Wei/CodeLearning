@@ -35,6 +35,7 @@ private:
     stack<int> myQueue,trans;
     vector<int> ans;
     vector<vector<int>> ans2;
+    unordered_map<int,UndirectedGraphNode*> labelMap; //cloneGraph : UndrectedGraphNode
 public:
     bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t);
     
@@ -319,7 +320,87 @@ public:
     int powMod(int x, int y);
     int superPow(int a, vector<int>& b);
     
+    UndirectedGraphNode *cloneGraph(UndirectedGraphNode *node);
+    
+    int getMoneyAmount(int n);
+    int getMA(vector<vector<int>>& dp, int lo, int hi);
+    
+    int kthSmallest(vector<vector<int>>& matrix, int k);
+    
+    bool searchMatrix(vector<vector<int>>& matrix, int target);
 };
+
+bool Solution::searchMatrix(vector<vector<int>>& matrix, int target) {
+    int r = matrix.size();
+    if(r == 0) return false;
+    int c = matrix[0].size();
+    if(c == 0) return false;
+    
+    int left = 0, right = r - 1, mid;
+    while(left <= right) {
+        mid = left + (right - left)/2;
+        if(matrix[mid][0] > target) right = mid - 1;
+        else if(matrix[mid][0] < target) left = mid + 1;
+        else return true;
+    }
+    int newRow = min(left, right);
+    if(newRow < 0 || newRow >= r) return false;
+    right = c - 1;
+    left = 0;
+    while(left <= right) {
+        mid = left + (right - left)/2;
+        if(matrix[newRow][mid] > target) right = mid - 1;
+        else if(matrix[newRow][mid] < target) left = mid + 1;
+        else return true;
+    }
+    return false;
+}
+
+int Solution::kthSmallest(vector<vector<int>>& matrix, int k) {
+    priority_queue<int> que;
+    int count = 0;
+    for(int i = 0; i < matrix.size(); ++i) {
+        for(int j = 0; j < matrix[0].size(); ++j) {
+            if(que.size() < k) que.push(matrix[i][j]);
+            else if(que.top() > matrix[i][j]) {
+                que.pop();
+                que.push(matrix[i][j]);
+            }
+        }
+    }
+    return que.top();
+}
+
+int Solution::getMoneyAmount(int n) {
+    vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
+    return getMA(dp, 1, n);
+}
+
+int Solution::getMA(vector<vector<int>>& dp, int lo, int hi) {
+    if(lo >= hi) return 0;
+    int ret = INT_MAX;
+    if(dp[lo][hi] != 0) return dp[lo][hi];
+    for(int i = lo; i < hi; ++i) {
+        ret = min(ret, i + max(getMA(dp,lo, i - 1), getMA(dp, i + 1, hi)));
+    }
+    dp[lo][hi] = ret;
+    return ret;
+}
+
+UndirectedGraphNode* Solution::cloneGraph(UndirectedGraphNode *node) {
+    if(node == nullptr) return nullptr;
+    auto it = labelMap.find(node->label);
+    if(it != labelMap.end()) return it->second;
+    
+    UndirectedGraphNode *newNode = new UndirectedGraphNode(node->label);
+    labelMap[node->label] = newNode;;
+    
+    for(auto iter : node->neighbors) {
+        UndirectedGraphNode *newNeighbor = cloneGraph(iter);
+        newNode->neighbors.push_back(newNeighbor);
+    }
+    return newNode;
+}
 
 int Solution::powMod(int x, int y) {
     int ret = 1;

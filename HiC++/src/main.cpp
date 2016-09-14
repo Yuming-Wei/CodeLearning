@@ -364,7 +364,18 @@ int main(int argc, const char * argv[]) {
 //    matrix.push_back(line3);
 //    matrix.push_back(line4);
 //    cout << s.maximalRectangle(matrix);
-    cout << s.myPow(8.0314, 3) << endl;
     
+//    cout << s.myPow(8.0314, 3) << endl;
+    
+//    UndirectedGraphNode *newNode = new UndirectedGraphNode(10);
+//    cout<< newNode->label;
+
+    int bitA, bitB, carry;
+    int count = 4;
+    bitA = (1<<count);
+    bitB = (1<<count);
+    carry = (1<<count);
+    carry = (carry&bitA)|(carry&bitB)|(bitA&bitB);
+    cout << carry << endl;
     
 }

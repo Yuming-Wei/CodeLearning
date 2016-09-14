@@ -141,14 +141,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "521"
             endingLineNumber = "521"
-            landmarkName = "Solution::getSum(int a, int b)"
+            landmarkName = "Solution::lengthOfLongestSubstring(string s)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HiC++/header/Solution.hpp"
@@ -157,8 +157,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "535"
             endingLineNumber = "535"
-            landmarkName = "compareFunction(int x, int y)"
-            landmarkType = "7">
+            landmarkName = "Solution::topKFrequent(vector&lt;int&gt; &amp;nums, int k)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -173,8 +173,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "556"
             endingLineNumber = "556"
-            landmarkName = "compareFunction(int x, int y)"
-            landmarkType = "7">
+            landmarkName = "Solution::findRepeatedDnaSequences(string s)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -205,7 +205,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "2196"
             endingLineNumber = "2196"
-            landmarkName = "Solution::generate2(int numRows)"
+            landmarkName = "Solution::numSquares(int n)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

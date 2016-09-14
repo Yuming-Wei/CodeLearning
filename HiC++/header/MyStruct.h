@@ -38,4 +38,10 @@ struct Point {
     Point(int a, int b) : x(a), y(b) {}
 };
 
+struct UndirectedGraphNode {
+    int label;
+    vector<UndirectedGraphNode *> neighbors;
+    UndirectedGraphNode(int x):label(x){};
+};
+
 #endif /* MyStruct_h */
