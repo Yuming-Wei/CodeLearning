@@ -379,10 +379,11 @@ int main(int argc, const char * argv[]) {
 //    carry = (carry&bitA)|(carry&bitB)|(bitA&bitB);
 //    cout << carry << endl;
     
-    Twitter obj = new Twitter();
-    obj.postTweet(userId,tweetId);
-    vector<int> param_2 = obj.getNewsFeed(userId);
-    obj.follow(followerId,followeeId);
-    obj.unfollow(followerId,followeeId);
+    Twitter obj;
+    obj.postTweet(1,5);
+    obj.postTweet(1,3);
+    vector<int> param_3 = obj.getNewsFeed(1);
+    
+    
     
 }
