@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B03051341D92C6BA00641C98 /* Twitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Twitter.h; sourceTree = "<group>"; };
 		B0637FA21D5A7A2100CD92C7 /* AbstractFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractFactory.h; sourceTree = "<group>"; };
 		B0637FA31D5A7A2100CD92C7 /* FactoryProducer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryProducer.h; sourceTree = "<group>"; };
 		B0637FA41D5A7A2100CD92C7 /* FindDuplicateArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindDuplicateArray.h; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 				B0637FB01D5A7A2100CD92C7 /* VirtualTable.h */,
 				B0A6076C1D5B721E0020B2BE /* ListClass.h */,
 				B072AE341D6F5FED007651A1 /* ConnectedCellsInGrid.h */,
+				B03051341D92C6BA00641C98 /* Twitter.h */,
 			);
 			path = header;
 			sourceTree = "<group>";

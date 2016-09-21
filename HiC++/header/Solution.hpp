@@ -328,7 +328,68 @@ public:
     int kthSmallest(vector<vector<int>>& matrix, int k);
     
     bool searchMatrix(vector<vector<int>>& matrix, int target);
+    
+    bool searchMatrixII(vector<vector<int>>& matrix, int target);
+    
+    pair<bool, double> search(unordered_map<string, vector<pair<string, double>>>& mp, unordered_set<string>& visited, string& start, string& end, double curVal);
+    vector<double> calcEquation(vector<pair<string, string>> equations, vector<double>& values, vector<pair<string, string>> queries);
+    
 };
+
+pair<bool, double> Solution::search(unordered_map<string, vector<pair<string, double>>>& mp, unordered_set<string>& visited, string& start, string& end, double curVal) {
+    // If already visited, skip
+    if(visited.count(start) == 0) {
+        // Mark the string as visited to avoid loop
+        visited.insert(start);
+        for(int i = 0; i < mp[start].size(); ++i) {
+            // Make sure the string exist in the relation map
+            if(mp.count(start)) {
+                // Found direct relation, return the value
+                if(mp[start][i].first == end) return make_pair(true, curVal*mp[start][i].second);
+                else {
+                    // No direct value found, the recursively search the relation
+                    auto res = search(mp, visited, mp[start][i].first, end, curVal*mp[start][i].second);
+                    if(res.first) return res;
+                }
+            }
+        }
+    }
+    // No such relation or series relation, return -1.0
+    return make_pair(false, -1.0);
+}
+
+vector<double> Solution::calcEquation(vector<pair<string, string>> equations, vector<double>& values, vector<pair<string, string>> queries) {
+    vector<double> ans;
+    // Map for traverse the relation
+    unordered_map<string, vector<pair<string, double>>> mp;
+    
+    // Record all the relation of string and
+    for(int i = 0; i < equations.size(); ++i) {
+        mp[equations[i].first].push_back(make_pair(equations[i].second, values[i]));
+        mp[equations[i].second].push_back(make_pair(equations[i].first, 1.0/values[i]));
+    }
+    // For each query search for the answer
+    for(auto q : queries) {
+        unordered_set<string> visited;
+        ans.push_back(search(mp, visited, q.first, q.second, 1.0).second);
+    }
+    return ans;
+}
+
+bool Solution::searchMatrixII(vector<vector<int>>& matrix, int target) {
+    int r = matrix.size();
+    if(r == 0) return false;
+    int c = matrix[0].size();
+    if(c == 0) return false;
+    
+    int i = r - 1, j = 0;
+    while(i >=0 && j < c) {
+        if(matrix[i][j] > target) i--;
+        else if(matrix[i][j] < target) j++;
+        else return true;
+    }
+    return false;
+}
 
 bool Solution::searchMatrix(vector<vector<int>>& matrix, int target) {
     int r = matrix.size();

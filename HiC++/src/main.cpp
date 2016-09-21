@@ -28,6 +28,7 @@
 #include "VirtualTable.h"
 #include "ListClass.h"
 #include "ConnectedCellsInGrid.h"
+#include "Twitter.h"
 
 using namespace std;
 
@@ -370,12 +371,18 @@ int main(int argc, const char * argv[]) {
 //    UndirectedGraphNode *newNode = new UndirectedGraphNode(10);
 //    cout<< newNode->label;
 
-    int bitA, bitB, carry;
-    int count = 4;
-    bitA = (1<<count);
-    bitB = (1<<count);
-    carry = (1<<count);
-    carry = (carry&bitA)|(carry&bitB)|(bitA&bitB);
-    cout << carry << endl;
+//    int bitA, bitB, carry;
+//    int count = 4;
+//    bitA = (1<<count);
+//    bitB = (1<<count);
+//    carry = (1<<count);
+//    carry = (carry&bitA)|(carry&bitB)|(bitA&bitB);
+//    cout << carry << endl;
+    
+    Twitter obj = new Twitter();
+    obj.postTweet(userId,tweetId);
+    vector<int> param_2 = obj.getNewsFeed(userId);
+    obj.follow(followerId,followeeId);
+    obj.unfollow(followerId,followeeId);
     
 }
